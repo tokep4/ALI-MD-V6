@@ -1,257 +1,173 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="robots.txt.html" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALI MD - WEBSITE</title>
+    <link rel="website icon" type="jpg" href="megalodon.jpg">
   <style>
-    /* General Body Styling */
-    body {
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Arial', sans-serif;
-      color: #e2e8f0;
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #001f3f;
+      color: white;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1; /* Ensure body content is above the video */
-    }
-
-    /* Video Background */
-    video.background-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Cover the whole screen */
-      z-index: -1; /* Ensure the video is behind the content */
-    }
-
-    /* Star Animation for Twinkling Stars */
-    .star {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      animation: twinkle 1.5s infinite ease-in-out;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 0.8; }
-    }
-
-    /* Generate Stars */
-    function createStars() {
-      for (let i = 0; i < 200; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-        const size = Math.random() * 2 + 1;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.top = `${Math.random() * 100}vh`;
-        star.style.left = `${Math.random() * 100}vw`;
-        document.body.appendChild(star);
-      }
-    }
-    createStars();
-
-    /* Button Container */
-    .button-container {
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      z-index: 10;
+      min-height: 100vh;
+      overflow: hidden;
       position: relative;
-      flex-grow: 1;
     }
 
-    /* Typing Effect */
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blinkCaret {
-      from, to { border-color: transparent; }
-      50% { border-color: #fff; }
-    }
-
-    h3 {
-      color: #1e3a8a;
-      font-size: 30px;
-      margin-bottom: 20px;
-      font-weight: bold;
-      overflow: hidden; /* Ensure the text stays within the container */
-      border-right: .15em solid #fff; /* The caret */
-      white-space: nowrap; /* Keep all the text on one line */
-      animation:
-        typing 3.5s steps(40, end),
-        blinkCaret .75s step-end infinite;
-    }
-
-    /* Rainbow Button Animation */
-    @keyframes rainbowBackground {
-      0% { background-color: #ff0000; }
-      14% { background-color: #ff7f00; }
-      28% { background-color: #00ff00; }
-      42% { background-color: #0000ff; }
-      57% { background-color: #4b0082; }
-      71% { background-color: #ff0000; }
-      100% { background-color: #ff0000; }
-    }
-
-    /* Button Styling */
-    .button {
-      display: inline-block;
-      width: 220px;
-      font-size: 18px;
-      font-weight: 500;
-      height: 50px;
-      border: 2px solid #444;
-      color: #fff;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
-      text-align: center;
-      line-height: 50px;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transition: background 0.5s, box-shadow 0.3s ease;
-      animation: rainbowBackground 5s linear infinite;
-    }
-
-    .button:hover {
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    /* Footer Section with Moving Rainbow Text */
-    footer {
-      position: fixed;
-      bottom: 10px;
-      width: 100%;
-      text-align: center;
-      padding: 10px 0;
-      z-index: 10;
-      animation: rainbowText 10s linear infinite;
-    }
-
-    @keyframes rainbowText {
-      0% { color: red; }
-      14% { color: orange; }
-      28% { color: yellow; }
-      42% { color: green; }
-      57% { color: blue; }
-      71% { color: indigo; }
-      85% { color: violet; }
-      100% { color: red; }
-    }
-
-    footer b a {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    footer b a:hover {
-      text-decoration: underline;
-    }
-
-    /* Moving Bar Animation */
-    .moving-bar {
+    body::before {
+      content: "";
       position: absolute;
-      bottom: 20px;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(270deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #ee82ee);
+      background-size: 500% 500%;
+      animation: glow 15s ease infinite;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    @keyframes glow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(0, 0, 64, 0.9);
+      border-radius: 18px;
+      padding: 2rem;
+      text-align: center;
+      max-width: 480px;
+      box-shadow: 0 0 25px #0074D9;
+    }
+
+    .card img.profile {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #0074D9;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+      color: #00aaff;
+    }
+
+    .btn {
+      display: block;
       width: 100%;
-      height: 6px;
-      background-color: #ffeb3b;
-      animation: moveBar 5s linear infinite;
+      padding: 12px;
+      margin: 10px 0;
+      background: transparent;
+      border: 2px solid #0074D9;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.4s;
+      animation: buttonGlow 4s linear infinite;
     }
 
-    @keyframes moveBar {
-      0% { left: -100%; }
-      100% { left: 100%; }
+    @keyframes buttonGlow {
+      0% { box-shadow: 0 0 10px #ff0000; border-color: #ff0000; }
+      33% { box-shadow: 0 0 10px #00ff00; border-color: #00ff00; }
+      66% { box-shadow: 0 0 10px #0074D9; border-color: #0074D9; }
+      100% { box-shadow: 0 0 10px #ff0000; border-color: #ff0000; }
     }
 
-    /* Dynamic Info Area */
-    #Info {
-      margin-top: 20px;
-      font-size: 16px;
-      font-weight: bold;
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #bbb;
+    }
+
+    audio {
+      margin-top: 1rem;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    #digital-clock {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: #00ffcc;
+    }
+
+    .tz-flag {
+      width: 20px;
+      height: 12px;
+      border-radius: 2px;
+      border: 1px solid #fff;
     }
   </style>
 </head>
 <body>
-  <!-- Video Background -->
-  <video class="background-video" autoplay loop muted>
-    <source src="https://files.catbox.moe/pjzc5i.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <div class="card">
+    <img src="https://files.catbox.moe/zmhz85.jpg" alt="SPIRITY-MD" class="profile" />
 
-  <!-- Content Section -->
-  <div class="button-container">
-    <h3>This is Alpha Md session</h3>
-    <a href="/pair" class="button">PAIR CODE</a><br>
-        <a href="/qr" class="button">PAIR CODE</a><br>
-    <a href="https://github.com/Keithkeizzah/ALPHA-MD/fork" class="button">FORK KEITH MD REPO</a><br>
+    <h1>SPIRITY-XMD</h1>
+
+    <button class="btn" onclick="window.open('https://wa.me/22603582906', '_blank')">Dark-DEv</button>
+    <button class="btn" onclick="window.open('https://github.com/DARKMAN226/SPIRITY-XMD/fork', '_blank')">FORK REPOS</button>
+    <button class="btn" onclick="window.open('https://github.com/itxxwasi', '_blank')">饾殕饾櫚饾殏饾櫢 饾殐饾櫞饾櫜饾櫡</button>
+    <button class="btn" onclick="window.open('/pair')">PARING CODE</button>
+    <button class="btn" onclick="window.open('/qr')">QR CODE</button>
+    <button class="btn" onclick="window.open('https://wa.me/22603582906', '_blank')">Dark-DEv</button>
     
-    <div class="current-info" id="Info"><b>Loading...</b></div>
+
+    <audio controls autoplay loop>
+      <source src="https://files.catbox.moe/wivkqd.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Digital Clock with Tanzania Flag -->
+    <div id="digital-clock">
+      <span id="time"></span>
+      <img src="https://files.catbox.moe/zmhz85.jpg" alt="Opps" class="tz-flag">
+    </div>
+
+    <div class="footer">漏 2025 SPIRITY-XMD. All rights reserved.</div>
   </div>
 
-  <!-- Footer Section -->
-  <footer>
-    <b>&copy; 2024 <a href="https://github.com/Keithkeizzah">Regards Keith </a></b>
-  </footer>
-
-  <!-- Moving Bar -->
-  <div class="moving-bar"></div>
-
   <script>
-    // Update Time, Date, and Day info dynamically
-    function updateInfo() {
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-      const seconds = String(now.getSeconds()).padStart(2, '0');
-      const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-      const dayName = dayNames[now.getDay()];
-      const date = now.toLocaleDateString(); 
-
-      const timeString = `${hours}:${minutes}:${seconds}`;
-      const infoString = `Time: ${timeString} | Date: ${date} | Day: ${dayName}`;
-      document.getElementById('Info').textContent = infoString;
+    function updateTime() {
+      const options = {
+        timeZone: 'America/Port-au-Prince',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      };
+      const now = new Date().toLocaleTimeString('en-GB', options);
+      document.getElementById('time').textContent = now;
     }
 
-    // Update info every second
-    setInterval(updateInfo, 1000);
-    updateInfo();
-
-    // Fetch Country Flag from IP Address
-    async function fetchCountryFlag() {
-      try {
-        const res = await fetch('https://api.davidcyriltech.my.id/status');
-        const data = await res.json();
-        const countryCode = data.country_code;
-        const flag = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
-        const flagImg = document.createElement('img');
-        flagImg.src = flag;
-        flagImg.alt = `${data.country_name} Flag`;
-        flagImg.style.width = '40px';
-        flagImg.style.height = 'auto';
-        flagImg.style.marginTop = '20px';
-        document.body.appendChild(flagImg);
-      } catch (error) {
-        console.error("Error fetching country flag:", error);
-      }
-    }
-
-    fetchCountryFlag();
+    setInterval(updateTime, 1000);
+    updateTime();
   </script>
 </body>
-</html>
+  </html>
