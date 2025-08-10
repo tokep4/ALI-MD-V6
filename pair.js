@@ -16,10 +16,15 @@ const {
 
 // List of audio URLs
 const audioUrls = [
-    "https://files.catbox.moe/hpwsi2.mp3",
-    "https://files.catbox.moe/zjk77k.mp3",
-    "https://files.catbox.moe/fe5lem.m4a",
-    "https://files.catbox.moe/4b1ohl.mp3"
+    "https://files.catbox.moe/brusa6.mp4",
+      "https://files.catbox.moe/3j1zy4.mp4",
+      "https://files.catbox.moe/4g3dwj.mp4",
+      "https://files.catbox.moe/su4wyp.mp4",
+      "https://files.catbox.moe/8cuz5m.mp4",
+      "https://files.catbox.moe/pdjieu.mp4",
+      "https://files.catbox.moe/esixn9.mp4",
+      "https://files.catbox.moe/dqj2fq.mp4",
+      "https://files.catbox.moe/dnyop2.mp4"
 ];
 
 
