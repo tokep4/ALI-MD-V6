@@ -1,5 +1,6 @@
-const PastebinAPI = require('pastebin-js'),
-pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL');
+const PastebinAPI = require('pastebin-js');
+// Pastebin integration removed for security - API key was hardcoded
+// pastebin = new PastebinAPI(process.env.PASTEBIN_API_KEY || '');
 const { makeid } = require('./id');
 const QRCode = require('qrcode');
 const express = require('express');

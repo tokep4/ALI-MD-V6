@@ -1,6 +1,7 @@
 const zlib = require('zlib'); // For compression
-const PastebinAPI = require('pastebin-js'),
-pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL');
+const PastebinAPI = require('pastebin-js');
+// Pastebin integration removed for security - API key was hardcoded
+// pastebin = new PastebinAPI(process.env.PASTEBIN_API_KEY || '');
 const { makeid } = require('./id');
 const express = require('express');
 const fs = require('fs');
@@ -61,6 +62,14 @@ function removeFile(FilePath) {
 router.get('/', async (req, res) => {
     const id = makeid();
     let num = req.query.number;
+    
+    // Validate phone number parameter
+    if (!num) {
+        return res.status(400).json({ 
+            code: "Phone number is required", 
+            error: "Missing phone number parameter" 
+        });
+    }
 
     async function BWM_XMD_PAIR_CODE() {
         const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);

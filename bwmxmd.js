@@ -1,8 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Ensure temp directory exists
+const tempDir = path.join(__dirname, 'temp');
+if (!fs.existsSync(tempDir)) {
+    fs.mkdirSync(tempDir, { recursive: true });
+}
 
 // Import routes
 const qr = require('./qr');
