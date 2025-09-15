@@ -11,10 +11,9 @@
   "author": "Ibrahim Adams",
   "license": "GPL-3.0 license",
   "dependencies": {
-"@whiskeysockets/baileys": "^6.7.19",
-    "maher-zubair-baileys": "^6.6.5",
-    "qrcode": "^1.5.3",
+   "@whiskeysockets/baileys": "latest",
     "awesome-phonenumber": "^2.64.0",
+    "qrcode": "^1.5.3",
     "pino": "^8.1.0",
     "phone" : "3.1.30",
     "fs": "^0.0.1-security",
