@@ -773,6 +773,307 @@
         text-align: center;
       }
     }
+
+    /* Deploy Panel Section */
+    .panel-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .panel-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899, #EF4444);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .panel-title i {
+      font-size: 3rem;
+      color: #8B5CF6;
+      animation: panelGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes panelGlow {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      50% { transform: scale(1.05); filter: brightness(1.2); }
+    }
+
+    .panel-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .panel-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .panel-card:hover::before {
+      left: 100%;
+    }
+
+    .panel-card:hover {
+      transform: translateY(-8px);
+      border-color: #8B5CF6;
+      box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .panel-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      animation: panelIconSpin 4s linear infinite;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+    }
+
+    @keyframes panelIconSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .panel-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .panel-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-desc {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .panel-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--surface-2);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background: var(--surface-3);
+      transform: translateY(-2px);
+      border-color: #8B5CF6;
+    }
+
+    .feature-item i {
+      font-size: 1.2rem;
+      color: #8B5CF6;
+    }
+
+    .feature-item span {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .panel-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .panel-btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .panel-btn.primary {
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      color: white;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .panel-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    }
+
+    .panel-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .panel-btn.secondary:hover {
+      color: #8B5CF6;
+      border-color: #8B5CF6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.1);
+    }
+
+    .panel-instructions {
+      display: flex;
+      justify-content: space-around;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .instruction-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      max-width: 250px;
+      text-align: left;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .step-content h4 {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      color: var(--text-soft);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    /* Mobile responsiveness for panel section */
+    @media (max-width: 768px) {
+      .panel-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .panel-title i {
+        font-size: 2.5rem;
+      }
+
+      .panel-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .panel-card {
+        padding: 2rem;
+      }
+
+      .panel-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .panel-info {
+        text-align: center;
+      }
+
+      .panel-features {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .panel-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .panel-instructions {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .instruction-item {
+        max-width: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -973,6 +1274,81 @@
             <h4>Quick Setup Guide</h4>
             <p>Most platforms will automatically detect the configuration. Just add your environment variables and deploy!</p>
             <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Recommended for 24/7 bots:</strong> Heroku, Railway, Render, and DigitalOcean support persistent processes. Vercel and Netlify are better for static/serverless deployments.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deploy Panel Section -->
+    <div class="panel-section slide-up">
+      <h2 class="panel-title">
+        <i class="fas fa-desktop"></i>
+        Admin Panel
+      </h2>
+      <p class="panel-subtitle">Download and deploy the management panel to control your 𝐀ɭīī 𝐌𝐃 𝐁❍𝐓</p>
+      
+      <div class="panel-card">
+        <div class="panel-header">
+          <div class="panel-icon">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <div class="panel-info">
+            <h3 class="panel-name">ALI-MD Control Panel</h3>
+            <p class="panel-desc">Complete admin interface for managing bot features, users, and configurations</p>
+          </div>
+        </div>
+        
+        <div class="panel-features">
+          <div class="feature-item">
+            <i class="fas fa-users-cog"></i>
+            <span>User Management</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-chart-bar"></i>
+            <span>Analytics Dashboard</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>Security Controls</span>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-puzzle-piece"></i>
+            <span>Plugin Manager</span>
+          </div>
+        </div>
+        
+        <div class="panel-actions">
+          <a href="https://github.com/sumon9836/ALI-MD_panel_file/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer" class="panel-btn primary">
+            <i class="fas fa-download"></i>
+            Download Panel Files
+          </a>
+          <a href="https://github.com/sumon9836/ALI-MD_panel_file" target="_blank" rel="noopener noreferrer" class="panel-btn secondary">
+            <i class="fab fa-github"></i>
+            View Repository
+          </a>
+        </div>
+        
+        <div class="panel-instructions">
+          <div class="instruction-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Download Files</h4>
+              <p>Download the panel files and extract them to your server</p>
+            </div>
+          </div>
+          <div class="instruction-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Configure</h4>
+              <p>Set up your database connection and bot credentials</p>
+            </div>
+          </div>
+          <div class="instruction-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Deploy</h4>
+              <p>Upload to your hosting platform and start managing your bot</p>
+            </div>
           </div>
         </div>
       </div>
