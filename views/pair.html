@@ -25,7 +25,7 @@
       justify-content: center;
       min-height: 100vh;
       padding: 1rem;
-      background: linear-gradient(135deg, #000000 0%, #0D1117 30%, #1a1a2e 70%, #000000 100%);
+      background: linear-gradient(135deg, #0d0d0d, #1a001a, #260026, #0b0b0b);
       background-size: 400% 400%;
       animation: backgroundShift 15s ease infinite;
     }
@@ -165,7 +165,7 @@
       right: 8px;
       top: 50%;
       transform: translateY(-50%);
-      background: linear-gradient(135deg, #DC143C, #FF1744);
+      background: linear-gradient(135deg, #FF007F, #8B008B);
       border: none;
       border-radius: 16px;
       padding: 1.25rem 2rem;
@@ -174,7 +174,7 @@
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      box-shadow: 0 6px 20px rgba(220, 20, 60, 0.4);
+      box-shadow: 0 6px 20px rgba(255, 0, 127, 0.4);
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -201,15 +201,15 @@
 
     .pair-button:hover {
       transform: translateY(-50%) translateY(-4px) scale(1.05);
-      box-shadow: 0 12px 35px rgba(220, 20, 60, 0.6);
+      box-shadow: 0 12px 35px rgba(255, 0, 127, 0.6);
     }
 
     @keyframes pairButtonPulse {
       0%, 100% { 
-        box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+        box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
       }
       50% { 
-        box-shadow: 0 8px 30px rgba(220, 20, 60, 0.7);
+        box-shadow: 0 8px 30px rgba(255, 0, 127, 0.7);
       }
     }
 
@@ -532,7 +532,7 @@
       
       try {
         // Make API call
-        const response = await axios(`/code?number=${phoneNumber}`);
+        const response = await axios(`/pair?number=${phoneNumber}`);
         const code = response.data.code;
         
         if (code && code !== "❗ Service Unavailable" && code !== "Service is Currently Unavailable") {
