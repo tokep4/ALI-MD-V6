@@ -1,4 +1,3 @@
-
 const express = require('express');
 const path = require('path');
 const bodyParser = require("body-parser");
@@ -33,7 +32,7 @@ async function cleanupOldSessions() {
         const sessionsDir = path.join(__dirname, 'sessions');
         const qrDir = path.join(__dirname, 'qr_sessions');
         const authDir = path.join(__dirname, 'auth_info_baileys');
-        
+
         // Clean up old session directories
         if (await fs.pathExists(sessionsDir)) {
             const sessions = await fs.readdir(sessionsDir);
@@ -96,13 +95,14 @@ async function initializeServer() {
     });
 
     // Import routes
-    const qrRoute = require('./routes/qr');
-    const pairRoute = require('./routes/pair');
+    const qrRoutes = require('./routes/qr');
+    const pairRoutes = require('./routes/pair');
+    const codeRoutes = require('./routes/code');
 
     // Routes with error handling
     app.use('/qr', (req, res, next) => {
         try {
-            qrRoute(req, res, next);
+            qrRoutes(req, res, next);
         } catch (error) {
             console.error('❌ QR route error:', error.message);
             next(error);
@@ -111,7 +111,7 @@ async function initializeServer() {
 
     app.use('/code', (req, res, next) => {
         try {
-            pairRoute(req, res, next);
+            codeRoutes(req, res, next);
         } catch (error) {
             console.error('❌ Pair route error:', error.message);
             next(error);
@@ -184,7 +184,7 @@ async function initializeServer() {
     app.use((err, req, res, next) => {
         console.error('❌ Global error handler:', err.message);
         console.error(err.stack);
-        
+
         if (!res.headersSent) {
             res.status(err.status || 500).json({
                 error: 'Internal server error',
@@ -197,7 +197,7 @@ async function initializeServer() {
 // Graceful shutdown
 function gracefulShutdown(signal) {
     console.log(`\n🔄 Received ${signal}. Starting graceful shutdown...`);
-    
+
     process.exit(0);
 }
 
