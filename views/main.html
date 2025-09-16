@@ -110,9 +110,50 @@
     .cta-section {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      margin: 3rem 0;
+      gap: 2rem;
+      margin: 4rem 0;
       flex-wrap: wrap;
+    }
+
+    .main-cta-btn {
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      min-width: 200px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .main-cta-btn i {
+      font-size: 1.5rem;
+      margin-right: 0.75rem;
+    }
+
+    .main-cta-btn:hover {
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .main-cta-btn.qr-btn {
+      background: linear-gradient(135deg, #1E90FF, #00BFFF, #4169E1);
+      box-shadow: 0 10px 40px rgba(30, 144, 255, 0.4);
+    }
+
+    .main-cta-btn.qr-btn:hover {
+      box-shadow: 0 20px 60px rgba(30, 144, 255, 0.6);
+    }
+
+    .main-cta-btn.pair-btn {
+      background: linear-gradient(135deg, #DC143C, #FF1744, #FF6B6B);
+      box-shadow: 0 10px 40px rgba(220, 20, 60, 0.4);
+    }
+
+    .main-cta-btn.pair-btn:hover {
+      box-shadow: 0 20px 60px rgba(220, 20, 60, 0.6);
     }
 
     .footer {
@@ -1260,11 +1301,11 @@
     </div>
 
     <div class="cta-section slide-up">
-      <a href="/qr-scanner" class="btn btn-primary">
+      <a href="/qr-scanner" class="btn main-cta-btn qr-btn">
         <i class="fas fa-qrcode"></i>
         QR Scanner
       </a>
-      <a href="/pair" class="btn btn-danger">
+      <a href="/pair" class="btn main-cta-btn pair-btn">
         <i class="fas fa-mobile-alt"></i>
         Phone Pairing
       </a>
@@ -1359,7 +1400,7 @@
         <!-- Heroku -->
         <a href="https://heroku.com/deploy?template=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card heroku">
           <div class="deploy-icon">
-            <i class="fas fa-server"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg" alt="Heroku" style="width: 40px; height: 40px; object-fit: contain;">
           </div>
           <h3 class="deploy-name">Heroku</h3>
           <p class="deploy-desc">Cloud platform with easy scaling</p>
@@ -1372,7 +1413,7 @@
         <!-- Railway -->
         <a href="https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FALI-INXIDE%2FALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card railway">
           <div class="deploy-icon">
-            <i class="fas fa-train"></i>
+            <img src="https://railway.app/brand/logo-light.svg" alt="Railway" style="width: 40px; height: 40px; object-fit: contain; filter: invert(1);">
           </div>
           <h3 class="deploy-name">Railway</h3>
           <p class="deploy-desc">Modern deployment platform</p>
@@ -1382,24 +1423,10 @@
           </div>
         </a>
 
-
-         <!-- panel -->
-        <a href="https://github.com/sumon9836/ALI-MD_panel_file.git" target="_blank" rel="noopener noreferrer" class="deploy-card panel">
-          <div class="deploy-icon">
-            <i class="fas fa-server"></i>
-          </div>
-          <h3 class="deploy-name">panel</h3>
-          <p class="deploy-desc">Cloud platform with easy scaling</p>
-          <div class="deploy-badge">
-            <i class="fas fa-up-right-from-square"></i>
-            Deploy Now
-          </div>
-        </a>
-
         <!-- Render -->
         <a href="https://render.com/deploy?repo=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card render">
           <div class="deploy-icon">
-            <i class="fas fa-cube"></i>
+            <img src="https://render.com/favicon.ico" alt="Render" style="width: 40px; height: 40px; object-fit: contain;">
           </div>
           <h3 class="deploy-name">Render</h3>
           <p class="deploy-desc">Fast and reliable hosting</p>
@@ -1409,27 +1436,13 @@
           </div>
         </a>
 
-
         <!-- DigitalOcean -->
         <a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card digitalocean">
           <div class="deploy-icon">
-            <i class="fas fa-cloud"></i>
+            <img src="https://www.vectorlogo.zone/logos/digitalocean/digitalocean-icon.svg" alt="DigitalOcean" style="width: 40px; height: 40px; object-fit: contain;">
           </div>
           <h3 class="deploy-name">DigitalOcean</h3>
           <p class="deploy-desc">Scalable cloud infrastructure</p>
-          <div class="deploy-badge">
-            <i class="fas fa-up-right-from-square"></i>
-            Deploy Now
-          </div>
-        </a>
-
-        <!-- Netlify -->
-        <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card netlify">
-          <div class="deploy-icon">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3 class="deploy-name">Netlify</h3>
-          <p class="deploy-desc">Simple and fast static hosting</p>
           <div class="deploy-badge">
             <i class="fas fa-up-right-from-square"></i>
             Deploy Now
@@ -1478,25 +1491,25 @@
 
   <script>
     // Add smooth scroll animations
-    const observerOptions = {
+    const slideUpObserverOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const slideUpObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
         }
       });
-    }, observerOptions);
+    }, slideUpObserverOptions);
 
     document.querySelectorAll('.slide-up').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
       el.style.transition = 'all 0.8s ease-out';
-      observer.observe(el);
+      slideUpObserver.observe(el);
     });
 
     // Enhanced scroll effects with throttling
