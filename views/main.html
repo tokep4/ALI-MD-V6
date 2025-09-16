@@ -8,32 +8,64 @@
   <link rel="stylesheet" href="/theme.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    :root {
+      /* Black/Blue/Red color palette */
+      --bg: #000000;
+      --surface: #0D1117;
+      --surface-2: rgba(13,17,23,0.8);
+      --surface-3: rgba(21,32,43,0.9);
+
+      /* Text colors */
+      --text: #FFFFFF;
+      --text-soft: #C9D1D9;
+      --text-muted: #8B949E;
+      --border: rgba(30,144,255,0.15);
+
+      /* Enhanced Blue & Red */
+      --blue: #1E90FF;
+      --blue-neo: #00BFFF;
+      --blue-light: #4169E1;
+      --red: #DC143C;
+      --red-neo: #FF1744;
+      --red-light: #FF6B6B;
+
+      /* Dramatic gradients */
+      --grad-primary: linear-gradient(135deg, #1E90FF, #0066CC);
+      --grad-accent: linear-gradient(135deg, #DC143C, #FF1744);
+      --grad-bg: linear-gradient(135deg, #000000 0%, #0D1117 30%, #1a1a2e 70%, #000000 100%);
+      --grad-surface: linear-gradient(145deg, rgba(13,17,23,0.95), rgba(21,32,43,0.8));
+
+      /* Glass effects with blue tint */
+      --glass: rgba(13,17,23,0.8);
+      --glass-border: rgba(30,144,255,0.2);
+    }
+
     /* Page specific enhancements */
     .hero {
       text-align: center;
       margin: 2rem auto 4rem;
       position: relative;
     }
-    
+
     .logo-icon {
       font-size: 4rem;
       margin-bottom: 1rem;
       display: inline-block;
       animation: float 3s ease-in-out infinite;
     }
-    
+
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-10px); }
     }
-    
+
     .features-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
       margin: 3rem 0;
     }
-    
+
     .feature-card {
       background: var(--grad-surface);
       backdrop-filter: blur(20px);
@@ -45,13 +77,13 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .feature-card:hover {
       transform: translateY(-8px);
       box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
       border-color: var(--blue-neo);
     }
-    
+
     .feature-icon {
       font-size: 3rem;
       background: var(--grad-primary);
@@ -61,20 +93,20 @@
       margin-bottom: 1rem;
       display: block;
     }
-    
+
     .feature-title {
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--text);
       margin-bottom: 0.5rem;
     }
-    
+
     .feature-desc {
       color: var(--text-soft);
       font-size: 0.95rem;
       line-height: 1.5;
     }
-    
+
     .cta-section {
       display: flex;
       justify-content: center;
@@ -82,7 +114,7 @@
       margin: 3rem 0;
       flex-wrap: wrap;
     }
-    
+
     .footer {
       text-align: center;
       padding: 2rem 0;
@@ -91,7 +123,7 @@
       border-top: 1px solid var(--border);
       margin-top: 4rem;
     }
-    
+
     .brand-highlight {
       color: var(--blue-neo);
       font-weight: 600;
@@ -1023,11 +1055,11 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      
+
       html {
         scroll-behavior: auto !important;
       }
-      
+
       .logo-icon,
       .support-icon,
       .deploy-icon,
@@ -1130,7 +1162,7 @@
       .panel-card:hover {
         transform: translateY(-4px);
       }
-      
+
       .btn:hover,
       .github-btn:hover,
       .panel-btn:hover {
@@ -1256,7 +1288,7 @@
             Join Group
           </div>
         </a>
-        
+
         <a href="https://whatsapp.com/channel/0029VaoRxGmJpe8lgCqT1T2h" target="_blank" rel="noopener noreferrer" class="support-card channel-card">
           <div class="support-icon">
             <i class="fas fa-tower-broadcast"></i>
@@ -1297,15 +1329,15 @@
             </div>
           </div>
         </div>
-        
+
         <div class="github-actions">
           <a href="https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="github-btn primary">
             <i class="fab fa-github"></i>
             View Repository
           </a>
-         
+
         </div>
-        
+
         <div class="tech-stack">
           <div class="tech-badge">JavaScript</div>
           <div class="tech-badge">Node.js</div>
@@ -1322,7 +1354,7 @@
         Deploy Your Bot
       </h2>
       <p class="deploy-subtitle">Choose your preferred platform to deploy 𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 in one click</p>
-      
+
       <div class="deploy-grid">
         <!-- Heroku -->
         <a href="https://heroku.com/deploy?template=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card heroku">
@@ -1391,7 +1423,19 @@
           </div>
         </a>
 
-       
+        <!-- Netlify -->
+        <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card netlify">
+          <div class="deploy-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3 class="deploy-name">Netlify</h3>
+          <p class="deploy-desc">Simple and fast static hosting</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
       <div class="deploy-info">
         <div class="info-card">
           <i class="fas fa-info-circle"></i>
@@ -1438,7 +1482,7 @@
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1447,52 +1491,52 @@
         }
       });
     }, observerOptions);
-    
+
     document.querySelectorAll('.slide-up').forEach(el => {
       el.style.opacity = '0';
       el.style.transform = 'translateY(30px)';
       el.style.transition = 'all 0.8s ease-out';
       observer.observe(el);
     });
-    
+
     // Enhanced scroll effects with throttling
     let ticking = false;
-    
+
     function updateOnScroll() {
       const scrolled = window.pageYOffset;
       const parallax = document.querySelector('.hero');
-      
+
       // Parallax effect
       if (parallax && scrolled < window.innerHeight) {
         parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
       }
-      
+
       // Scroll reveal animation
       const reveals = document.querySelectorAll('.scroll-reveal');
       reveals.forEach((element) => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
+
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('revealed');
         }
       });
-      
+
       ticking = false;
     }
-    
+
     document.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(updateOnScroll);
         ticking = true;
       }
     }, { passive: true });
-    
+
     // Add scroll-reveal class to animated elements
     document.querySelectorAll('.slide-up').forEach(el => {
       el.classList.add('scroll-reveal');
     });
-    
+
     // Enhanced button ripple effect
     document.querySelectorAll('.btn, .github-btn, .panel-btn').forEach(button => {
       button.addEventListener('click', function(e) {
@@ -1501,7 +1545,7 @@
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.cssText = `
           position: absolute;
           border-radius: 50%;
@@ -1512,12 +1556,12 @@
           animation: ripple-effect 0.6s ease-out;
           pointer-events: none;
         `;
-        
+
         this.appendChild(ripple);
         setTimeout(() => ripple.remove(), 600);
       });
     });
-    
+
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -1531,13 +1575,13 @@
         }
       });
     });
-    
+
     // Intersection Observer for performance-optimized animations
     const cardObserverOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -10% 0px'
     };
-    
+
     const cardObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
@@ -1548,7 +1592,7 @@
         }
       });
     }, cardObserverOptions);
-    
+
     // Observe cards for staggered animations
     document.querySelectorAll('.feature-card, .support-card, .deploy-card').forEach(card => {
       card.style.opacity = '0';

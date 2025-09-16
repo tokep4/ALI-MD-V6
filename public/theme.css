@@ -2,35 +2,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Space+Grotesk:wght@400;600&display=swap');
 
 :root {
-  /* Dark color palette */
-  --bg: #0B0F1A;
-  --surface: #111827;
-  --surface-2: rgba(17,24,39,0.7);
-  --surface-3: rgba(31,41,55,0.8);
+  /* Black/Blue/Red color palette */
+  --bg: #000000;
+  --surface: #0D1117;
+  --surface-2: rgba(13,17,23,0.8);
+  --surface-3: rgba(21,32,43,0.9);
   
   /* Text colors */
-  --text: #E5E7EB;
-  --text-soft: #94A3B8;
-  --text-muted: #64748B;
-  --border: rgba(255,255,255,0.08);
+  --text: #FFFFFF;
+  --text-soft: #C9D1D9;
+  --text-muted: #8B949E;
+  --border: rgba(30,144,255,0.15);
   
-  /* Brand colors - Blue & Red */
-  --blue: #2563EB;
-  --blue-neo: #0EA5E9;
-  --blue-light: #3B82F6;
-  --red: #EF233C;
-  --red-neo: #FF3B5C;
-  --red-light: #F87171;
+  /* Enhanced Blue & Red */
+  --blue: #1E90FF;
+  --blue-neo: #00BFFF;
+  --blue-light: #4169E1;
+  --red: #DC143C;
+  --red-neo: #FF1744;
+  --red-light: #FF6B6B;
   
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, #0EA5E9, #2563EB);
-  --grad-accent: linear-gradient(135deg, #2563EB, #EF233C);
-  --grad-bg: linear-gradient(135deg, #0B0F1A 0%, #1E293B 50%, #0F172A 100%);
-  --grad-surface: linear-gradient(145deg, rgba(17,24,39,0.9), rgba(31,41,55,0.6));
+  /* Dramatic gradients */
+  --grad-primary: linear-gradient(135deg, #1E90FF, #0066CC);
+  --grad-accent: linear-gradient(135deg, #DC143C, #FF1744);
+  --grad-bg: linear-gradient(135deg, #000000 0%, #0D1117 30%, #1a1a2e 70%, #000000 100%);
+  --grad-surface: linear-gradient(145deg, rgba(13,17,23,0.95), rgba(21,32,43,0.8));
   
-  /* Glass effects */
-  --glass: rgba(17,24,39,0.6);
-  --glass-border: rgba(255,255,255,0.1);
+  /* Glass effects with blue tint */
+  --glass: rgba(13,17,23,0.8);
+  --glass-border: rgba(30,144,255,0.2);
+  --glass-dark: rgba(0,0,0,0.9);
 }
 
 /* Base styles */

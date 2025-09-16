@@ -25,6 +25,14 @@
       justify-content: center;
       min-height: 100vh;
       padding: 1rem;
+      background: linear-gradient(135deg, #000000 0%, #0D1117 30%, #1a1a2e 70%, #000000 100%);
+      background-size: 400% 400%;
+      animation: backgroundShift 15s ease infinite;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
     }
 
     .main-container {
@@ -148,7 +156,7 @@
       right: 6px;
       top: 50%;
       transform: translateY(-50%);
-      background: var(--grad-primary);
+      background: linear-gradient(135deg, #DC143C, #FF1744);
       border: none;
       border-radius: 12px;
       padding: 1rem 1.5rem;
@@ -156,16 +164,43 @@
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      position: relative;
+      overflow: hidden;
+      animation: pairButtonPulse 2s ease-in-out infinite;
+    }
+
+    .pair-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .pair-button:hover::before {
+      left: 100%;
     }
 
     .pair-button:hover {
-      transform: translateY(-50%) translateY(-2px);
-      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+      transform: translateY(-50%) translateY(-4px) scale(1.05);
+      box-shadow: 0 12px 35px rgba(220, 20, 60, 0.6);
+    }
+
+    @keyframes pairButtonPulse {
+      0%, 100% { 
+        box-shadow: 0 4px 15px rgba(220, 20, 60, 0.4);
+      }
+      50% { 
+        box-shadow: 0 8px 30px rgba(220, 20, 60, 0.7);
+      }
     }
 
     .pair-button:active {
