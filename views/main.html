@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 | Fast Pairing</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="/theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      /* Black/Blue/Red color palette */
+      --bg: #000000;
+      --surface: #0D1117;
+      --surface-2: rgba(13,17,23,0.8);
+      --surface-3: rgba(21,32,43,0.9);
+
+      /* Text colors */
+      --text: #FFFFFF;
+      --text-soft: #C9D1D9;
+      --text-muted: #8B949E;
+      --border: rgba(30,144,255,0.15);
+
+      /* Enhanced Blue & Red */
+      --blue: #1E90FF;
+      --blue-neo: #00BFFF;
+      --blue-light: #4169E1;
+      --red: #DC143C;
+      --red-neo: #FF1744;
+      --red-light: #FF6B6B;
+
+      /* Dramatic gradients */
+      --grad-primary: linear-gradient(135deg, #1E90FF, #0066CC);
+      --grad-accent: linear-gradient(135deg, #DC143C, #FF1744);
+      --grad-bg: linear-gradient(135deg, #000000 0%, #0D1117 30%, #1a1a2e 70%, #000000 100%);
+      --grad-surface: linear-gradient(145deg, rgba(13,17,23,0.95), rgba(21,32,43,0.8));
+
+      /* Glass effects with blue tint */
+      --glass: rgba(13,17,23,0.8);
+      --glass-border: rgba(30,144,255,0.2);
+    }
+
+    /* Page specific enhancements */
+    .hero {
+      text-align: center;
+      margin: 2rem auto 4rem;
+      position: relative;
+    }
+
+    .logo-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(37, 99, 235, 0.2);
+      border-color: var(--blue-neo);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      background: var(--grad-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .cta-section {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 4rem 0;
+      flex-wrap: wrap;
+    }
+
+    .main-cta-btn {
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      min-width: 200px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    }
+
+    .main-cta-btn i {
+      font-size: 1.5rem;
+      margin-right: 0.75rem;
+    }
+
+    .main-cta-btn:hover {
+      transform: translateY(-8px) scale(1.05);
+    }
+
+    .main-cta-btn.qr-btn {
+      background: linear-gradient(135deg, #1E90FF, #00BFFF, #4169E1);
+      box-shadow: 0 10px 40px rgba(30, 144, 255, 0.4);
+    }
+
+    .main-cta-btn.qr-btn:hover {
+      box-shadow: 0 20px 60px rgba(30, 144, 255, 0.6);
+    }
+
+    .main-cta-btn.pair-btn {
+      background: linear-gradient(135deg, #DC143C, #FF1744, #FF6B6B);
+      box-shadow: 0 10px 40px rgba(220, 20, 60, 0.4);
+    }
+
+    .main-cta-btn.pair-btn:hover {
+      box-shadow: 0 20px 60px rgba(220, 20, 60, 0.6);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+      margin-top: 4rem;
+    }
+
+    .brand-highlight {
+      color: var(--blue-neo);
+      font-weight: 600;
+    }
+
+    /* WhatsApp Support Section */
+    .whatsapp-support-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .whatsapp-support-section .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .whatsapp-support-section .section-title i {
+      font-size: 3rem;
+      color: #25D366;
+      animation: whatsappPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes whatsappPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .support-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .support-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(37, 211, 102, 0.1), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .support-card:hover::before {
+      left: 100%;
+    }
+
+    .support-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: #25D366;
+      box-shadow: 0 25px 50px rgba(37, 211, 102, 0.2);
+    }
+
+    .group-card {
+      background: linear-gradient(135deg, rgba(37, 211, 102, 0.1), rgba(18, 140, 126, 0.1));
+    }
+
+    .channel-card {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(239, 35, 60, 0.1));
+    }
+
+    .support-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2.5rem;
+      color: white;
+      animation: iconFloat 3s ease-in-out infinite;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .support-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .support-desc {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .support-badge {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .support-card:hover .support-badge {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Mobile responsiveness for support section */
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .section-title i {
+        font-size: 2.5rem;
+      }
+
+      .support-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .support-card {
+        padding: 2rem;
+      }
+
+      .support-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+    }
+
+    /* GitHub Section */
+    .github-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .github-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #333333, #24292F);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .github-title i {
+      font-size: 3rem;
+      color: #333333;
+      animation: githubRotate 4s ease-in-out infinite;
+    }
+
+    @keyframes githubRotate {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.1); }
+    }
+
+    .github-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .github-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(51, 51, 51, 0.1), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .github-card:hover::before {
+      left: 100%;
+    }
+
+    .github-card:hover {
+      transform: translateY(-8px);
+      border-color: #333333;
+      box-shadow: 0 25px 50px rgba(51, 51, 51, 0.2);
+    }
+
+    .github-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .repo-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #333333, #24292F);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      animation: iconPulse 2s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(51, 51, 51, 0.3);
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .repo-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .repo-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .repo-desc {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .repo-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .github-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .github-btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .github-btn.primary {
+      background: linear-gradient(135deg, #333333, #24292F);
+      color: white;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3);
+    }
+
+    .github-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(51, 51, 51, 0.4);
+    }
+
+    .github-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .github-btn.secondary:hover {
+      color: #333333;
+      border-color: #333333;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(51, 51, 51, 0.1);
+    }
+
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-badge {
+      background: var(--surface-2);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .tech-badge:hover {
+      background: var(--blue-neo);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile responsiveness for GitHub section */
+    @media (max-width: 768px) {
+      .github-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .github-title i {
+        font-size: 2.5rem;
+      }
+
+      .github-card {
+        padding: 2rem;
+      }
+
+      .github-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .repo-info {
+        text-align: center;
+      }
+
+      .repo-stats {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .github-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .github-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .tech-stack {
+        gap: 0.5rem;
+      }
+    }
+
+    /* Deploy Section */
+    .deploy-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .deploy-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .deploy-title i {
+      font-size: 3rem;
+      color: #FF6B6B;
+      animation: rocketLaunch 3s ease-in-out infinite;
+    }
+
+    @keyframes rocketLaunch {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-5px) rotate(-5deg); }
+      75% { transform: translateY(-3px) rotate(3deg); }
+    }
+
+    .deploy-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .deploy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .deploy-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .deploy-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      transition: left 0.8s ease;
+    }
+
+    .deploy-card:hover::before {
+      left: 100%;
+    }
+
+    .deploy-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Platform-specific colors */
+    .deploy-card.heroku::before {
+      background: linear-gradient(90deg, transparent, rgba(121, 74, 167, 0.1), transparent);
+    }
+    .deploy-card.heroku:hover {
+      border-color: #794AA7;
+      box-shadow: 0 25px 50px rgba(121, 74, 167, 0.3);
+    }
+    .deploy-card.heroku .deploy-icon {
+      background: linear-gradient(135deg, #794AA7, #5C3B8A);
+    }
+
+    .deploy-card.railway::before {
+      background: linear-gradient(90deg, transparent, rgba(11, 14, 23, 0.1), transparent);
+    }
+    .deploy-card.railway:hover {
+      border-color: #0B0E17;
+      box-shadow: 0 25px 50px rgba(11, 14, 23, 0.3);
+    }
+    .deploy-card.railway .deploy-icon {
+      background: linear-gradient(135deg, #0B0E17, #1C1F2B);
+    }
+
+    .deploy-card.render::before {
+      background: linear-gradient(90deg, transparent, rgba(70, 211, 207, 0.1), transparent);
+    }
+    .deploy-card.render:hover {
+      border-color: #46D3CF;
+      box-shadow: 0 25px 50px rgba(70, 211, 207, 0.3);
+    }
+    .deploy-card.render .deploy-icon {
+      background: linear-gradient(135deg, #46D3CF, #36A8A4);
+    }
+
+    .deploy-card.vercel::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    }
+    .deploy-card.vercel:hover {
+      border-color: #000000;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+    .deploy-card.vercel .deploy-icon {
+      background: linear-gradient(135deg, #000000, #333333);
+    }
+
+    .deploy-card.digitalocean::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+    }
+    .deploy-card.digitalocean:hover {
+      border-color: #007BFF;
+      box-shadow: 0 25px 50px rgba(0, 123, 255, 0.3);
+    }
+    .deploy-card.digitalocean .deploy-icon {
+      background: linear-gradient(135deg, #007BFF, #0056CC);
+    }
+
+    .deploy-card.netlify::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 173, 152, 0.1), transparent);
+    }
+    .deploy-card.netlify:hover {
+      border-color: #00AD98;
+      box-shadow: 0 25px 50px rgba(0, 173, 152, 0.3);
+    }
+    .deploy-card.netlify .deploy-icon {
+      background: linear-gradient(135deg, #00AD98, #00968A);
+    }
+
+    .deploy-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+      animation: deployIconFloat 3s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes deployIconFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .deploy-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .deploy-desc {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .deploy-badge {
+      background: var(--grad-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .deploy-card:hover .deploy-badge {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .deploy-info {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .info-card {
+      background: var(--surface-2);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border-left: 4px solid var(--blue-neo);
+    }
+
+    .info-card i {
+      font-size: 1.5rem;
+      color: var(--blue-neo);
+      margin-top: 0.25rem;
+    }
+
+    .info-content h4 {
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-content p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Mobile responsiveness for deploy section */
+    @media (max-width: 768px) {
+      .deploy-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .deploy-title i {
+        font-size: 2.5rem;
+      }
+
+      .deploy-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .deploy-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .deploy-card {
+        padding: 1.5rem;
+      }
+
+      .deploy-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+
+      .deploy-name {
+        font-size: 1.2rem;
+      }
+
+      .info-card {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Panel Section */
+    .panel-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .panel-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899, #EF4444);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .panel-title i {
+      font-size: 3rem;
+      color: #8B5CF6;
+      animation: panelGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes panelGlow {
+      0%, 100% { transform: scale(1); filter: brightness(1); }
+      50% { transform: scale(1.05); filter: brightness(1.2); }
+    }
+
+    .panel-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .panel-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .panel-card:hover::before {
+      left: 100%;
+    }
+
+    .panel-card:hover {
+      transform: translateY(-8px);
+      border-color: #8B5CF6;
+      box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .panel-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: white;
+      animation: panelIconSpin 4s linear infinite;
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+    }
+
+    @keyframes panelIconSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .panel-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .panel-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-desc {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .panel-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--surface-2);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background: var(--surface-3);
+      transform: translateY(-2px);
+      border-color: #8B5CF6;
+    }
+
+    .feature-item i {
+      font-size: 1.2rem;
+      color: #8B5CF6;
+    }
+
+    .feature-item span {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .panel-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .panel-btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .panel-btn.primary {
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      color: white;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .panel-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    }
+
+    .panel-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .panel-btn.secondary:hover {
+      color: #8B5CF6;
+      border-color: #8B5CF6;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.1);
+    }
+
+    .panel-instructions {
+      display: flex;
+      justify-content: space-around;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .instruction-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      max-width: 250px;
+      text-align: left;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #8B5CF6, #EC4899);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .step-content h4 {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      color: var(--text-soft);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    /* Enhanced Animations & Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto !important;
+      }
+
+      .logo-icon,
+      .support-icon,
+      .deploy-icon,
+      .panel-icon,
+      .repo-icon {
+        animation: none !important;
+      }
+    }
+
+    /* Smooth Scroll Enhancement */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+    }
+
+    /* Loading Animation */
+    .loading-shimmer {
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* Enhanced Button Animations */
+    .btn, .github-btn, .panel-btn, .support-badge, .deploy-badge {
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    .btn::after, .github-btn::after, .panel-btn::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+      pointer-events: none;
+    }
+
+    .btn:active::after, .github-btn:active::after, .panel-btn:active::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Staggered Animation for Cards */
+    .support-card:nth-child(1) { animation-delay: 0.1s; }
+    .support-card:nth-child(2) { animation-delay: 0.2s; }
+    .deploy-card:nth-child(1) { animation-delay: 0.1s; }
+    .deploy-card:nth-child(2) { animation-delay: 0.2s; }
+    .deploy-card:nth-child(3) { animation-delay: 0.3s; }
+    .deploy-card:nth-child(4) { animation-delay: 0.4s; }
+    .deploy-card:nth-child(5) { animation-delay: 0.5s; }
+    .deploy-card:nth-child(6) { animation-delay: 0.6s; }
+
+    /* Enhanced Hover Effects */
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: var(--grad-primary);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .feature-card:hover::after {
+      opacity: 0.7;
+    }
+
+    /* Scroll-triggered Animations */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Touch Device Optimizations */
+    @media (hover: none) and (pointer: coarse) {
+      .feature-card:hover,
+      .support-card:hover,
+      .deploy-card:hover,
+      .github-card:hover,
+      .panel-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .btn:hover,
+      .github-btn:hover,
+      .panel-btn:hover {
+        transform: translateY(-1px);
+      }
+    }
+
+    /* Improved Focus States */
+    .btn:focus-visible,
+    .github-btn:focus-visible,
+    .panel-btn:focus-visible {
+      outline: 3px solid var(--blue-neo);
+      outline-offset: 2px;
+    }
+
+    /* High Contrast Mode Support */
+    @media (prefers-contrast: high) {
+      :root {
+        --border: #ffffff40;
+        --text: #ffffff;
+        --text-soft: #e5e5e5;
+      }
+    }
+
+    /* Mobile responsiveness for panel section */
+    @media (max-width: 768px) {
+      .panel-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .panel-title i {
+        font-size: 2.5rem;
+      }
+
+      .panel-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .panel-card {
+        padding: 2rem;
+      }
+
+      .panel-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .panel-info {
+        text-align: center;
+      }
+
+      .panel-features {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .panel-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .panel-instructions {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .instruction-item {
+        max-width: none;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="hero fade-in">
+     
+      <h1 class="hero-title">𝐀ɭīī 𝐌𝐃 𝐁❍𝐓</h1>
+      <p class="hero-subtitle">Next-generation WhatsApp Bot pairing experience</p>
+      <div class="status-chip">
+        <i class="fas fa-circle" style="color: #22C55E; font-size: 0.5rem;"></i>
+        Online • Ready to pair
+      </div>
+    </div>
+
+    <div class="cta-section slide-up">
+      <a href="/qr-scanner" class="btn main-cta-btn qr-btn">
+        <i class="fas fa-qrcode"></i>
+       𝐀ɭīī QR Scanner
+      </a>
+      <a href="/pair" class="btn main-cta-btn pair-btn">
+        <i class="fas fa-mobile-alt"></i>
+      𝐀ɭīī code Pairing
+      </a>
+    </div>
+
+    <!-- WhatsApp Support Section -->
+    <div class="whatsapp-support-section slide-up">
+      <h2 class="section-title">
+        <i class="fab fa-whatsapp"></i>
+        WhatsApp Support
+      </h2>
+      <div class="support-grid">
+        <a href="https://chat.whatsapp.com/EP0hLj5Pjx89s9VXbzZ3iV" target="_blank" rel="noopener noreferrer" class="support-card group-card">
+          <div class="support-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="support-title">Join Our Group</h3>
+          <p class="support-desc">Connect with other users, get help, and stay updated with latest features</p>
+          <div class="support-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Join Group
+          </div>
+        </a>
+
+        <a href="https://whatsapp.com/channel/0029VaoRxGmJpe8lgCqT1T2h" target="_blank" rel="noopener noreferrer" class="support-card channel-card">
+          <div class="support-icon">
+            <i class="fas fa-tower-broadcast"></i>
+          </div>
+          <h3 class="support-title">Follow Channel</h3>
+          <p class="support-desc">Get updates, announcements, and exclusive content directly from developers</p>
+          <div class="support-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Follow Channel
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- GitHub Section -->
+    <div class="github-section slide-up">
+      <h2 class="github-title">
+        <i class="fab fa-github"></i>
+        Open Source Project
+      </h2>
+      <div class="github-card">
+        <div class="github-header">
+          <div class="repo-icon">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <div class="repo-info">
+            <h3 class="repo-name">ALI-MD</h3>
+            <p class="repo-desc">Advanced WhatsApp Bot with Multi-Device Support</p>
+          </div>
+          <div class="repo-stats">
+            <div class="stat-item">
+              <i class="fas fa-star"></i>
+              <span>Stars</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-code-branch"></i>
+              <span>Forks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="github-actions">
+          <a href="https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="github-btn primary">
+            <i class="fab fa-github"></i>
+            View Repository
+          </a>
+
+        </div>
+
+        <div class="tech-stack">
+          <div class="tech-badge">JavaScript</div>
+          <div class="tech-badge">Node.js</div>
+          <div class="tech-badge">WhatsApp Web</div>
+          <div class="tech-badge">Multi-Device</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deploy Section -->
+    <div class="deploy-section slide-up">
+      <h2 class="deploy-title">
+        <i class="fas fa-rocket"></i>
+        Deploy Your Bot
+      </h2>
+      <p class="deploy-subtitle">Choose your preferred platform to deploy 𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 in one click</p>
+
+      <div class="deploy-grid">
+        <!-- Heroku -->
+        <a href="https://heroku.com/deploy?template=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card heroku">
+          <div class="deploy-icon">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Heroku_logo.svg" alt="Heroku" style="width: 40px; height: 40px; object-fit: contain;">
+          </div>
+          <h3 class="deploy-name">Heroku</h3>
+          <p class="deploy-desc">Cloud platform with easy scaling</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- Railway -->
+        <a href="https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FALI-INXIDE%2FALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card railway">
+          <div class="deploy-icon">
+            <img src="https://railway.app/brand/logo-light.svg" alt="Railway" style="width: 40px; height: 40px; object-fit: contain; filter: invert(1);">
+          </div>
+          <h3 class="deploy-name">Railway</h3>
+          <p class="deploy-desc">Modern deployment platform</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- Render -->
+        <a href="https://render.com/deploy?repo=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card render">
+          <div class="deploy-icon">
+            <img src="https://img.shields.io/badge/DEPLOY RENDER-h?color=black&style=for-the-badge&logo=render" alt="Render" style="width: 40px; height: 40px; object-fit: contain;">
+          </div>
+          <h3 class="deploy-name">Render</h3>
+          <p class="deploy-desc">Fast and reliable hosting</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- DigitalOcean -->
+        <a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card digitalocean">
+          <div class="deploy-icon">
+            <img src="https://www.vectorlogo.zone/logos/digitalocean/digitalocean-icon.svg" alt="DigitalOcean" style="width: 40px; height: 40px; object-fit: contain;">
+          </div>
+          <h3 class="deploy-name">DigitalOcean</h3>
+          <p class="deploy-desc">Scalable cloud infrastructure</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+      <div class="deploy-info">
+        <div class="info-card">
+          <i class="fas fa-info-circle"></i>
+          <div class="info-content">
+            <h4>Quick Setup Guide</h4>
+            <p>Most platforms will automatically detect the configuration. Just add your environment variables and deploy!</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Recommended for 24/7 bots:</strong> Heroku, Railway, Render, and DigitalOcean support persistent processes. Vercel and Netlify are better for static/serverless deployments.</p>
+          </div>
+        </div>
+      </div>
+
+    <div class="features-grid slide-up">
+      <div class="feature-card">
+        <i class="fas fa-bolt feature-icon"></i>
+        <h3 class="feature-title">Lightning Fast</h3>
+        <p class="feature-desc">Instant pairing in seconds with our optimized connection system</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shield-alt feature-icon"></i>
+        <h3 class="feature-title">Secure & Safe</h3>
+        <p class="feature-desc">End-to-end encrypted sessions with automatic cleanup</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-mobile-alt feature-icon"></i>
+        <h3 class="feature-title">Multi-Device</h3>
+        <p class="feature-desc">Compatible with all WhatsApp multi-device features</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-code feature-icon"></i>
+        <h3 class="feature-title">Developer Ready</h3>
+        <p class="feature-desc">Built for developers with clean APIs and documentation</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2025 <span class="brand-highlight">𝐀ɭīī 𝐌𝐃 𝐁❍𝐓</span>. All rights reserved.</p>
+      <p>Powered by advanced WhatsApp Web technology</p>
+    </div>
+  </div>
+
+  <script>
+    // Add smooth scroll animations
+    const slideUpObserverOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const slideUpObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, slideUpObserverOptions);
+
+    document.querySelectorAll('.slide-up').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.8s ease-out';
+      slideUpObserver.observe(el);
+    });
+
+    // Enhanced scroll effects with throttling
+    let ticking = false;
+
+    function updateOnScroll() {
+      const scrolled = window.pageYOffset;
+      const parallax = document.querySelector('.hero');
+
+      // Parallax effect
+      if (parallax && scrolled < window.innerHeight) {
+        parallax.style.transform = `translateY(${scrolled * 0.3}px)`;
+      }
+
+      // Scroll reveal animation
+      const reveals = document.querySelectorAll('.scroll-reveal');
+      reveals.forEach((element) => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('revealed');
+        }
+      });
+
+      ticking = false;
+    }
+
+    document.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateOnScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Add scroll-reveal class to animated elements
+    document.querySelectorAll('.slide-up').forEach(el => {
+      el.classList.add('scroll-reveal');
+    });
+
+    // Enhanced button ripple effect
+    document.querySelectorAll('.btn, .github-btn, .panel-btn').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const ripple = this.querySelector('::after') || document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+          position: absolute;
+          border-radius: 50%;
+          background: rgba(255,255,255,0.3);
+          transform: translate(${x}px, ${y}px);
+          width: ${size}px;
+          height: ${size}px;
+          animation: ripple-effect 0.6s ease-out;
+          pointer-events: none;
+        `;
+
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for performance-optimized animations
+    const cardAnimationObserverOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -10% 0px'
+    };
+
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0) scale(1)';
+          }, index * 100);
+        }
+      });
+    }, cardAnimationObserverOptions);
+
+    // Observe cards for staggered animations
+    document.querySelectorAll('.feature-card, .support-card, .deploy-card').forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px) scale(0.95)';
+      card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+      cardObserver.observe(card);
+    });
+  </script>
+</body>
+</html>

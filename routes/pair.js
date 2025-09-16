@@ -1,18 +1,11 @@
-const zlib = require('zlib'); // For compression
-const PastebinAPI = require('pastebin-js'),
-pastebin = new PastebinAPI('EMWTMkQAVfJa9kM-MRUrxd5Oku1U7pgL');
-const { makeid } = require('./id');
+const zlib = require('zlib');
+const { makeid } = require('../utils/id');
 const express = require('express');
-const fs = require('fs');
+const fs = require('fs-extra');
 let router = express.Router();
 const pino = require("pino");
-const {
-    default: Ibrahim_Adams,
-    useMultiFileAuthState,
-    delay,
-    makeCacheableSignalKeyStore,
-    Browsers
-} = require("@whiskeysockets/baileys");
+const { Boom } = require("@hapi/boom");
+const id = makeid();
 
 // List of audio URLs
 const audioUrls = [
@@ -27,69 +20,63 @@ const audioUrls = [
       "https://files.catbox.moe/dnyop2.mp4"
 ];
 
-
-// List of random facts and quotes
-const factsAndQuotes = [
-    "The only way to do great work is to love what you do. - Steve Jobs",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
-    "In the end, we only regret the chances we didn’t take.",
-    "The best way to predict the future is to create it. - Peter Drucker",
-    "Don’t watch the clock; do what it does. Keep going. - Sam Levenson",
-    "Happiness is not something ready made. It comes from your own actions. - Dalai Lama",
-    "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle. - Christian D. Larson",
-    "Act as if what you do makes a difference. It does. - William James"
-];
-
 // Function to get a random audio URL
 function getRandomAudioUrl() {
     const randomIndex = Math.floor(Math.random() * audioUrls.length);
     return audioUrls[randomIndex];
 }
-
-
-// Function to get a random fact/quote
-function getRandomFactOrQuote() {
-    const randomIndex = Math.floor(Math.random() * factsAndQuotes.length);
-    return factsAndQuotes[randomIndex];
-}
+const {
+    default: makeWASocket,
+    useMultiFileAuthState,
+    delay,
+    makeCacheableSignalKeyStore,
+    Browsers,
+    DisconnectReason
+} = require("@whiskeysockets/baileys");
+const { exec } = require('child_process');    
 
 function removeFile(FilePath) {
     if (!fs.existsSync(FilePath)) return false;
     fs.rmSync(FilePath, { recursive: true, force: true });
-};
+}
+
+// Ensure the directory is empty when the app starts
+if (fs.existsSync('./auth_info_baileys')) {
+    fs.emptyDirSync('./auth_info_baileys');
+}
 
 router.get('/', async (req, res) => {
-    const id = makeid();
     let num = req.query.number;
 
-    async function BWM_XMD_PAIR_CODE() {
-        const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
+    async function SUHAIL() {
+       const { state, saveCreds } = await useMultiFileAuthState('./temp/' + id);
         try {
-            let Pair_Code_By_Ibrahim_Adams = Ibrahim_Adams({
+            let Smd = makeWASocket({
                 auth: {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
                 },
                 printQRInTerminal: false,
                 logger: pino({ level: "fatal" }).child({ level: "fatal" }),
-                browser: Browsers.macOS('Chrome')
+                browser: Browsers.macOS("Safari"),
             });
-            if (!Pair_Code_By_Ibrahim_Adams.authState.creds.registered) {
+
+            if (!Smd.authState.creds.registered) {
                 await delay(1500);
                 num = num.replace(/[^0-9]/g, '');
-                const code = await Pair_Code_By_Ibrahim_Adams.requestPairingCode(num);
+                const code = await Smd.requestPairingCode(num);
                 if (!res.headersSent) {
                     await res.send({ code });
                 }
             }
 
-            Pair_Code_By_Ibrahim_Adams.ev.on('creds.update', saveCreds);
-            Pair_Code_By_Ibrahim_Adams.ev.on("connection.update", async (s) => {
+            Smd.ev.on('creds.update', saveCreds);
+            Smd.ev.on("connection.update", async (s) => {
                 const { connection, lastDisconnect } = s;
 
                 if (connection === "open") {
-                    await delay(50000);
-                    let data = fs.readFileSync(__dirname + `/temp/${id}/creds.json`);
+                     await delay(20000);
+  let data = fs.readFileSync(`./temp/${id}/creds.json`);
                     await delay(8000);
 
                     // Compress and encode session data
@@ -97,21 +84,21 @@ router.get('/', async (req, res) => {
                     let b64data = compressedData.toString('base64'); // Base64 encode
 
                     // Send session data first
-                    let sessionMessage = await Pair_Code_By_Ibrahim_Adams.sendMessage(Pair_Code_By_Ibrahim_Adams.user.id, {
+     await Smd.sendMessage(Smd.user.id, {
                         text: 'ALI-MD~' + b64data
                     });
 
                    
                     // Send the random audio URL as a voice note
                     const randomAudioUrl = getRandomAudioUrl(); // Get a random audio URL
-                    await Pair_Code_By_Ibrahim_Adams.sendMessage(Pair_Code_By_Ibrahim_Adams.user.id, {
+                    await Smd.sendMessage(Smd.user.id, {
                         audio: { url: randomAudioUrl },
                         mimetype: 'audio/mp4', // MIME type for voice notes
                         ptt: true,
                         waveform: [100, 0, 100, 0, 100, 0, 100], // Optional waveform pattern
                         fileName: 'shizo',
                         contextInfo: {
-                            mentionedJid: [Pair_Code_By_Ibrahim_Adams.user.id], // Mention the sender in the audio message
+                            mentionedJid: [Smd.user.id], // Mention the sender in the audio message
                             externalAdReply: {
                                 title: '𝐓𝐇𝐀𝐍𝐊𝐒 𝐅𝐎𝐑 𝐂𝐇𝐎𝐎𝐒𝐈𝐍𝐆 𝐀𝐋𝐈 𝐌𝐃',
                                 body: '𝐑𝐄𝐆𝐀𝐑𝐃𝐒 𝐀𝐋𝐈 𝐈𝐍𝐗𝐈𝐃𝐄',
@@ -124,23 +111,41 @@ router.get('/', async (req, res) => {
                     });
 
                     await delay(100);
-                    await Pair_Code_By_Ibrahim_Adams.ws.close();
+                    await Smd.ws.close();
                     return await removeFile('./temp/' + id);
-                } else if (connection === "close" && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode != 401) {
-                    await delay(10000);
-                    BWM_XMD_PAIR_CODE();
+          }
+         // Handle connection closures
+                if (connection === "close") {
+                    let reason = new Boom(lastDisconnect?.error)?.output.statusCode;
+                    if (reason === DisconnectReason.connectionClosed) {
+                        console.log("Connection closed!");
+                    } else if (reason === DisconnectReason.connectionLost) {
+                        console.log("Connection Lost from Server!");
+                    } else if (reason === DisconnectReason.restartRequired) {
+                        console.log("Restart Required, Restarting...");
+                        SUHAIL().catch(err => console.log(err));
+                    } else if (reason === DisconnectReason.timedOut) {
+                        console.log("Connection TimedOut!");
+                    } else {
+                        console.log('Connection closed with bot. Please run again.');
+                        console.log(reason);
+                        await delay(5000);
+                        console.log('Attempting to restart service...');
+                    }
                 }
             });
+
         } catch (err) {
-            console.log("service restarted");
-            await removeFile('./temp/' + id);
+            console.log("Error in SUHAIL function: ", err);
+            console.log("Service error occurred");
+            await fs.emptyDirSync(__dirname + '/auth_info_baileys');
             if (!res.headersSent) {
-                await res.send({ code: "Service is Currently Unavailable" });
+                await res.send({ code: "Try After Few Minutes" });
             }
         }
     }
 
-    return await BWM_XMD_PAIR_CODE();
+    await SUHAIL();
 });
 
 module.exports = router;

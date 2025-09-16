@@ -1,0 +1,815 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 - Phone Pairing">
+  <meta property="og:description" content="Pair your WhatsApp with 𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 using phone number verification.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://files.catbox.moe/y65ffs.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 - Phone Pairing">
+  <meta name="twitter:description" content="Secure phone number pairing for WhatsApp bot integration.">
+  <meta name="twitter:image" content="https://files.catbox.moe/y65ffs.jpg">
+  <title>𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 - Phone Pairing</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <link rel="stylesheet" href="/theme.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 1rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    }
+
+    @keyframes gradientFlow {
+      0%, 100% { background-position: 0% 50%; }
+      25% { background-position: 100% 50%; }
+      50% { background-position: 0% 100%; }
+      75% { background-position: 100% 0%; }
+    }
+
+    .main-container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+      animation: containerSlideUp 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 2s ease;
+      animation: containerShine 4s ease-in-out infinite;
+    }
+
+    @keyframes containerSlideUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(50px) scale(0.9);
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes containerShine {
+      0%, 100% { left: -100%; }
+      50% { left: 100%; }
+    }
+
+    .logo-section {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: logoFadeIn 1.2s ease-out 0.3s both;
+    }
+
+    @keyframes logoFadeIn {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0); 
+      }
+    }
+
+    .logo-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+      animation: logoPulse 3s infinite;
+      font-size: 2.5rem;
+      color: white;
+    }
+
+    @keyframes logoPulse {
+      0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+      }
+      50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 20px 45px rgba(102, 126, 234, 0.6);
+      }
+    }
+
+    .title {
+      font-family: 'Orbitron', monospace;
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .input-section {
+      margin-bottom: 2rem;
+      animation: inputSlideIn 1s ease-out 0.6s both;
+    }
+
+    @keyframes inputSlideIn {
+      from { 
+        opacity: 0; 
+        transform: translateX(-30px); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateX(0); 
+      }
+    }
+
+    .input-label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .phone-input {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 500;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      outline: none;
+      letter-spacing: 1px;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      animation: inputGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes inputGlow {
+      from { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
+      to { box-shadow: 0 0 30px rgba(102, 126, 234, 0.3); }
+    }
+
+    .phone-input:focus {
+      border-color: rgba(102, 126, 234, 0.8);
+      box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2), 0 0 40px rgba(102, 126, 234, 0.4);
+      transform: translateY(-2px) scale(1.02);
+      background: rgba(255, 255, 255, 0.15);
+      animation: inputFocusPulse 0.6s ease-out;
+    }
+
+    @keyframes inputFocusPulse {
+      0% { transform: translateY(-2px) scale(1.02); }
+      50% { transform: translateY(-4px) scale(1.04); }
+      100% { transform: translateY(-2px) scale(1.02); }
+    }
+
+    .phone-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .phone-input:valid {
+      border-color: rgba(34, 197, 94, 0.8);
+      animation: inputSuccess 0.8s ease-out;
+    }
+
+    @keyframes inputSuccess {
+      0% { border-color: rgba(255, 255, 255, 0.3); }
+      50% { border-color: rgba(34, 197, 94, 1); }
+      100% { border-color: rgba(34, 197, 94, 0.8); }
+    }
+
+    .generate-button {
+      width: 100%;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border: none;
+      border-radius: 16px;
+      padding: 1.2rem 2rem;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      overflow: hidden;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    .generate-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .generate-button:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+      animation: buttonHoverPulse 0.6s ease-out;
+    }
+
+    .generate-button:hover::before {
+      left: 100%;
+    }
+
+    @keyframes buttonHoverPulse {
+      0% { transform: translateY(-4px) scale(1.02); }
+      50% { transform: translateY(-6px) scale(1.04); }
+      100% { transform: translateY(-4px) scale(1.02); }
+    }
+
+    .generate-button:active {
+      transform: translateY(-2px) scale(1.01);
+      animation: buttonPress 0.2s ease-out;
+    }
+
+    @keyframes buttonPress {
+      0% { transform: translateY(-4px) scale(1.02); }
+      50% { transform: translateY(0) scale(0.98); }
+      100% { transform: translateY(-2px) scale(1.01); }
+    }
+
+    .generate-button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+      animation: loadingPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes loadingPulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 0.9; }
+    }
+
+    .loading-section {
+      display: none;
+      text-align: center;
+      margin: 1.5rem 0;
+      animation: loadingFadeIn 0.5s ease-out;
+    }
+
+    @keyframes loadingFadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .loading-spinner {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .result-section {
+      margin-top: 1.5rem;
+    }
+
+    .code-display {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      animation: codeSlideUp 0.8s ease-out;
+    }
+
+    @keyframes codeSlideUp {
+      from { 
+        opacity: 0; 
+        transform: translateY(30px) scale(0.95); 
+      }
+      to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+      }
+    }
+
+    .code-text {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.5rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .code-text:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px) scale(1.02);
+      border-color: rgba(102, 126, 234, 0.8);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+      animation: codeHover 0.6s ease-out;
+    }
+
+    @keyframes codeHover {
+      0% { transform: translateY(-3px) scale(1.02); }
+      50% { transform: translateY(-5px) scale(1.04); }
+      100% { transform: translateY(-3px) scale(1.02); }
+    }
+
+    .code-value {
+      color: #667eea;
+      font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      font-weight: 800;
+      text-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+      animation: codeGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes codeGlow {
+      from { text-shadow: 0 0 15px rgba(102, 126, 234, 0.5); }
+      to { text-shadow: 0 0 25px rgba(102, 126, 234, 0.8); }
+    }
+
+    .copy-icon {
+      font-size: 1rem;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      animation: copyIconFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes copyIconFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    .code-text:hover .copy-icon {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+
+    .error-message {
+      color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 107, 107, 0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      animation: errorShake 0.8s ease-in-out;
+    }
+
+    @keyframes errorShake {
+      0%, 100% { transform: translateX(0); }
+      10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+      20%, 40%, 60%, 80% { transform: translateX(5px); }
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .back-link:hover {
+      color: white;
+      border-color: rgba(102, 126, 234, 0.8);
+      transform: translateX(-3px);
+      background: rgba(102, 126, 234, 0.1);
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      padding: 1rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer-highlight {
+      color: #667eea;
+      font-weight: 600;
+    }
+
+    .success-animation {
+      animation: successPulse 0.8s ease-out;
+    }
+
+    @keyframes successPulse {
+      0% { 
+        transform: scale(1); 
+        background: rgba(34, 197, 94, 0.1);
+      }
+      50% { 
+        transform: scale(1.05); 
+        background: rgba(34, 197, 94, 0.2);
+      }
+      100% { 
+        transform: scale(1); 
+        background: rgba(34, 197, 94, 0.1);
+      }
+    }
+
+    .typing-animation {
+      animation: typing 0.3s ease-out;
+    }
+
+    @keyframes typing {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+      }
+      
+      .title {
+        font-size: 1.75rem;
+      }
+      
+      .subtitle {
+        font-size: 0.9rem;
+      }
+
+      .phone-input {
+        font-size: 1rem;
+        padding: 1.2rem 1.5rem;
+      }
+
+      .generate-button {
+        padding: 1rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <div class="logo-section">
+      <div class="logo-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+      <h1 class="title">𝐀ɭīī 𝐌𝐃 𝐁❍𝐓</h1>
+      <p class="subtitle">Enter your phone number to generate pairing code</p>
+    </div>
+
+    <div class="input-section">
+      <div class="input-label">
+        <i class="fas fa-phone"></i>
+        <span>WhatsApp Number with Country Code</span>
+      </div>
+      
+      <div class="input-wrapper">
+        <input 
+          type="tel" 
+          id="phoneNumber" 
+          class="phone-input" 
+          placeholder="Enter number with country code (e.g., 923001234567)"
+          maxlength="15"
+          autocomplete="tel"
+          pattern="[0-9]{10,15}"
+        >
+      </div>
+
+      <button id="generateButton" class="generate-button">
+        <i class="fas fa-paper-plane"></i>
+        <span>Generate Pairing Code</span>
+      </button>
+    </div>
+
+    <div class="loading-section" id="loadingSection">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <span>Generating pairing code...</span>
+      </div>
+    </div>
+
+    <div class="result-section" id="resultSection"></div>
+
+    <a href="/" class="back-link">
+      <i class="fas fa-arrow-left"></i>
+      Back to Home
+    </a>
+  </div>
+
+  <div class="footer">
+    <span class="footer-highlight">𝐀ɭīī 𝐌𝐃 𝐁❍𝐓</span> &copy; <span id="currentYear"></span> - Advanced WhatsApp Bot Solutions
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Main functionality
+    const phoneInput = document.getElementById('phoneNumber');
+    const generateButton = document.getElementById('generateButton');
+    const loadingSection = document.getElementById('loadingSection');
+    const resultSection = document.getElementById('resultSection');
+
+    // Copy function with enhanced UX and animations
+    async function copyCode() {
+      const codeElement = document.getElementById('codeText');
+      const codeValue = codeElement.getAttribute('data-code');
+      
+      try {
+        await navigator.clipboard.writeText(codeValue);
+        
+        // Visual feedback with enhanced animation
+        codeElement.innerHTML = `
+          <i class="fas fa-check-circle" style="color: #22C55E; font-size: 1.2rem; animation: successBounce 0.6s ease-out;"></i>
+          <span style="animation: successGlow 0.8s ease-out;">CODE COPIED!</span>
+        `;
+        codeElement.classList.add('success-animation');
+        
+        // Reset after 2.5 seconds
+        setTimeout(() => {
+          codeElement.innerHTML = `
+            <span>CODE: <span class="code-value">${codeValue}</span></span>
+            <i class="fas fa-copy copy-icon"></i>
+          `;
+          codeElement.classList.remove('success-animation');
+        }, 2500);
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = codeValue;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        codeElement.innerHTML = `
+          <i class="fas fa-check-circle" style="color: #22C55E; font-size: 1.2rem;"></i>
+          <span>CODE COPIED!</span>
+        `;
+        codeElement.classList.add('success-animation');
+        setTimeout(() => {
+          codeElement.innerHTML = `
+            <span>CODE: <span class="code-value">${codeValue}</span></span>
+            <i class="fas fa-copy copy-icon"></i>
+          `;
+          codeElement.classList.remove('success-animation');
+        }, 2500);
+      }
+    }
+
+    // Enhanced input validation and formatting with animations
+    phoneInput.addEventListener('input', function(e) {
+      // Add typing animation
+      e.target.classList.add('typing-animation');
+      setTimeout(() => {
+        e.target.classList.remove('typing-animation');
+      }, 300);
+
+      // Remove any non-numeric characters
+      let value = e.target.value.replace(/[^0-9]/g, '');
+      
+      // Limit to 15 digits (international standard)
+      if (value.length > 15) {
+        value = value.substring(0, 15);
+      }
+      
+      e.target.value = value;
+    });
+
+    // Add focus animations
+    phoneInput.addEventListener('focus', function(e) {
+      e.target.style.animation = 'inputFocusPulse 0.6s ease-out';
+    });
+
+    phoneInput.addEventListener('blur', function(e) {
+      e.target.style.animation = 'inputGlow 2s ease-in-out infinite alternate';
+    });
+
+    // Main generate button event with enhanced animations
+    generateButton.addEventListener('click', async function(e) {
+      e.preventDefault();
+      
+      const phoneNumber = phoneInput.value.replace(/[^0-9]/g, '');
+      
+      // Clear previous results
+      resultSection.innerHTML = '';
+      
+      // Validation with animated feedback
+      if (!phoneNumber) {
+        showError('Please enter your WhatsApp number with country code.');
+        phoneInput.style.animation = 'errorShake 0.8s ease-in-out';
+        setTimeout(() => {
+          phoneInput.style.animation = 'inputGlow 2s ease-in-out infinite alternate';
+        }, 800);
+        return;
+      }
+      
+      if (phoneNumber.length < 10) {
+        showError('Invalid number format. Please enter a valid phone number.');
+        phoneInput.style.animation = 'errorShake 0.8s ease-in-out';
+        setTimeout(() => {
+          phoneInput.style.animation = 'inputGlow 2s ease-in-out infinite alternate';
+        }, 800);
+        return;
+      }
+
+      if (phoneNumber.length > 15) {
+        showError('Phone number too long. Please check and try again.');
+        phoneInput.style.animation = 'errorShake 0.8s ease-in-out';
+        setTimeout(() => {
+          phoneInput.style.animation = 'inputGlow 2s ease-in-out infinite alternate';
+        }, 800);
+        return;
+      }
+      
+      // Show loading with animation
+      showLoading(true);
+      
+      try {
+        // Make API call
+        const response = await axios(`/code?number=${phoneNumber}`);
+        const code = response.data.code;
+        
+        if (code && code !== "❗ Service Unavailable" && code !== "Service is Currently Unavailable" && code !== "Try After Few Minutes") {
+          showSuccess(code);
+        } else {
+          showError('Service temporarily unavailable. Please try again later.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        if (error.response?.status === 400) {
+          showError('Invalid phone number format. Please check and try again.');
+        } else {
+          showError('Network error. Please check your connection and try again.');
+        }
+      } finally {
+        showLoading(false);
+      }
+    });
+
+    function showLoading(show) {
+      if (show) {
+        loadingSection.style.display = 'block';
+        loadingSection.style.animation = 'loadingFadeIn 0.5s ease-out';
+      } else {
+        loadingSection.style.display = 'none';
+      }
+      
+      generateButton.disabled = show;
+      generateButton.innerHTML = show ? 
+        '<div class="spinner" style="width: 20px; height: 20px; margin-right: 8px;"></div><span>Generating...</span>' :
+        '<i class="fas fa-paper-plane"></i><span>Generate Pairing Code</span>';
+    }
+
+    function showError(message) {
+      resultSection.innerHTML = `
+        <div class="error-message">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>${message}</span>
+        </div>
+      `;
+    }
+
+    function showSuccess(code) {
+      resultSection.innerHTML = `
+        <div class="code-display">
+          <div class="code-text" id="codeText" onclick="copyCode()" data-code="${code}">
+            <span>CODE: <span class="code-value">${code}</span></span>
+            <i class="fas fa-copy copy-icon"></i>
+          </div>
+          <div style="margin-top: 0.75rem; font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); text-align: center;">
+            Click the code above to copy it to clipboard
+          </div>
+        </div>
+      `;
+    }
+
+    // Enter key support
+    phoneInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        generateButton.click();
+      }
+    });
+
+    // Auto-focus on input with delay for better UX
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        phoneInput.focus();
+      }, 500);
+    });
+
+    // Add dynamic CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes successBounce {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.3); }
+        100% { transform: scale(1); }
+      }
+      
+      @keyframes successGlow {
+        0% { text-shadow: none; }
+        50% { text-shadow: 0 0 20px #22C55E; }
+        100% { text-shadow: none; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
