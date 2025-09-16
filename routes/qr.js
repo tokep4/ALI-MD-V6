@@ -1,33 +1,12 @@
 const { exec } = require("child_process");
-//const { upload } = require('../utils/mega');
 const express = require('express');
 let router = express.Router()
 const pino = require("pino");
 let { toBuffer } = require("qrcode");
 const path = require('path');
 const fs = require("fs-extra");
-const { Boom } = require("@hapi/boom");//
-const MESSAGE = process.env.MESSAGE || `
-╭─❍ *𝐒𝐄𝐒𝐒𝐈𝐎𝐍 𝐂𝐎𝐍𝐍𝐄𝐂𝐓𝐄𝐃 ✅*
-├ 🎐 *Bot Name:* 𝐊𝐀𝐈𝐒𝐄𝐍-𝐌𝐃
-├ 🍄 *Session:* Secure ID Linked
-╰───────────────⬣
-╭─❍ *ＤＥＰＬＯＹ ＯＰＴＩＯＮＳ*  
-├ ☁️ Railway
-├ 🌱 Heroku  
-├ 🤍 VPS / Private Server  
-├ 🌾 Hosting Panels →
-├ 🌧️ katabump.com
-├ 🌈 bothosting.net
-├ 🍒 optiklink.com 
-╰───────────────⬣
-╭─❍ *ＬＩＮＫＳ*  
-├ 🍓 GitHub →
-├ https://github.com/sumon9836/KAISEN-MD
-├ 🍉 WhatsApp → 
-├ https://chat.whatsapp.com/CQyxExEBMGvEnkA32zqbNY?mode=ac_t  
-╰───────────────⬣
-`;
+const { Boom } = require("@hapi/boom");
+
 
   const { default: makeWASocket, useMultiFileAuthState, makeCacheableSignalKeyStore, delay, Browsers, DisconnectReason } = require("@whiskeysockets/baileys");
 
