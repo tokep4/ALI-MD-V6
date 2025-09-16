@@ -2,36 +2,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800&family=Space+Grotesk:wght@400;600&display=swap');
 
 :root {
-  /* Black/Blue/Red color palette */
-  --bg: #000000;
-  --surface: #0D1117;
-  --surface-2: rgba(13,17,23,0.8);
-  --surface-3: rgba(21,32,43,0.9);
+  /* Dark Purple/Magenta color palette */
+  --bg: #0d0d0d;
+  --surface: rgba(20, 0, 20, 0.9);
+  --surface-2: rgba(26, 0, 26, 0.8);
+  --surface-3: rgba(38, 0, 38, 0.9);
   
   /* Text colors */
   --text: #FFFFFF;
-  --text-soft: #C9D1D9;
-  --text-muted: #8B949E;
-  --border: rgba(30,144,255,0.15);
+  --text-soft: #E5B3E5;
+  --text-muted: #B366B3;
+  --border: rgba(255, 0, 127, 0.3);
   
-  /* Enhanced Blue & Red */
-  --blue: #1E90FF;
-  --blue-neo: #00BFFF;
-  --blue-light: #4169E1;
+  /* Enhanced Purple & Magenta */
+  --blue: #FF007F;
+  --blue-neo: #FF1493;
+  --blue-light: #DA70D6;
   --red: #DC143C;
   --red-neo: #FF1744;
   --red-light: #FF6B6B;
   
   /* Dramatic gradients */
-  --grad-primary: linear-gradient(135deg, #1E90FF, #0066CC);
+  --grad-primary: linear-gradient(135deg, #FF007F, #8B008B);
   --grad-accent: linear-gradient(135deg, #DC143C, #FF1744);
-  --grad-bg: linear-gradient(135deg, #000000 0%, #0D1117 30%, #1a1a2e 70%, #000000 100%);
-  --grad-surface: linear-gradient(145deg, rgba(13,17,23,0.95), rgba(21,32,43,0.8));
+  --grad-bg: linear-gradient(135deg, #0d0d0d, #1a001a, #260026, #0b0b0b);
+  --grad-surface: linear-gradient(145deg, rgba(20, 0, 20, 0.95), rgba(38, 0, 38, 0.8));
   
-  /* Glass effects with blue tint */
-  --glass: rgba(13,17,23,0.8);
-  --glass-border: rgba(30,144,255,0.2);
-  --glass-dark: rgba(0,0,0,0.9);
+  /* Glass effects with magenta tint */
+  --glass: rgba(20, 0, 20, 0.8);
+  --glass-border: rgba(255, 0, 127, 0.3);
+  --glass-dark: rgba(13, 0, 13, 0.9);
 }
 
 /* Base styles */
@@ -76,17 +76,18 @@ body {
 }
 
 .card {
-  background: var(--grad-surface);
+  background: rgba(20, 0, 20, 0.9);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 2rem;
+  border: 1px solid #ff007f;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.7);
   border-color: var(--blue-neo);
 }
 

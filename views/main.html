@@ -847,7 +847,7 @@
       }
     }
 
-    /* Deploy Panel Section */
+    /* Panel Section */
     .panel-section {
       margin: 4rem 0;
       text-align: center;
@@ -1590,7 +1590,7 @@
     });
 
     // Intersection Observer for performance-optimized animations
-    const cardObserverOptions = {
+    const cardAnimationObserverOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -10% 0px'
     };
@@ -1604,7 +1604,7 @@
           }, index * 100);
         }
       });
-    }, cardObserverOptions);
+    }, cardAnimationObserverOptions);
 
     // Observe cards for staggered animations
     document.querySelectorAll('.feature-card, .support-card, .deploy-card').forEach(card => {
