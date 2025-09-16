@@ -495,6 +495,284 @@
         gap: 0.5rem;
       }
     }
+
+    /* Deploy Section */
+    .deploy-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .deploy-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #FF6B6B, #4ECDC4, #45B7D1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .deploy-title i {
+      font-size: 3rem;
+      color: #FF6B6B;
+      animation: rocketLaunch 3s ease-in-out infinite;
+    }
+
+    @keyframes rocketLaunch {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      25% { transform: translateY(-5px) rotate(-5deg); }
+      75% { transform: translateY(-3px) rotate(3deg); }
+    }
+
+    .deploy-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .deploy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .deploy-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .deploy-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      transition: left 0.8s ease;
+    }
+
+    .deploy-card:hover::before {
+      left: 100%;
+    }
+
+    .deploy-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Platform-specific colors */
+    .deploy-card.heroku::before {
+      background: linear-gradient(90deg, transparent, rgba(121, 74, 167, 0.1), transparent);
+    }
+    .deploy-card.heroku:hover {
+      border-color: #794AA7;
+      box-shadow: 0 25px 50px rgba(121, 74, 167, 0.3);
+    }
+    .deploy-card.heroku .deploy-icon {
+      background: linear-gradient(135deg, #794AA7, #5C3B8A);
+    }
+
+    .deploy-card.railway::before {
+      background: linear-gradient(90deg, transparent, rgba(11, 14, 23, 0.1), transparent);
+    }
+    .deploy-card.railway:hover {
+      border-color: #0B0E17;
+      box-shadow: 0 25px 50px rgba(11, 14, 23, 0.3);
+    }
+    .deploy-card.railway .deploy-icon {
+      background: linear-gradient(135deg, #0B0E17, #1C1F2B);
+    }
+
+    .deploy-card.render::before {
+      background: linear-gradient(90deg, transparent, rgba(70, 211, 207, 0.1), transparent);
+    }
+    .deploy-card.render:hover {
+      border-color: #46D3CF;
+      box-shadow: 0 25px 50px rgba(70, 211, 207, 0.3);
+    }
+    .deploy-card.render .deploy-icon {
+      background: linear-gradient(135deg, #46D3CF, #36A8A4);
+    }
+
+    .deploy-card.vercel::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    }
+    .deploy-card.vercel:hover {
+      border-color: #000000;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    }
+    .deploy-card.vercel .deploy-icon {
+      background: linear-gradient(135deg, #000000, #333333);
+    }
+
+    .deploy-card.digitalocean::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.1), transparent);
+    }
+    .deploy-card.digitalocean:hover {
+      border-color: #007BFF;
+      box-shadow: 0 25px 50px rgba(0, 123, 255, 0.3);
+    }
+    .deploy-card.digitalocean .deploy-icon {
+      background: linear-gradient(135deg, #007BFF, #0056CC);
+    }
+
+    .deploy-card.netlify::before {
+      background: linear-gradient(90deg, transparent, rgba(0, 173, 152, 0.1), transparent);
+    }
+    .deploy-card.netlify:hover {
+      border-color: #00AD98;
+      box-shadow: 0 25px 50px rgba(0, 173, 152, 0.3);
+    }
+    .deploy-card.netlify .deploy-icon {
+      background: linear-gradient(135deg, #00AD98, #00968A);
+    }
+
+    .deploy-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: white;
+      animation: deployIconFloat 3s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes deployIconFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+
+    .deploy-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .deploy-desc {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .deploy-badge {
+      background: var(--grad-primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .deploy-card:hover .deploy-badge {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    .deploy-info {
+      margin-top: 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .info-card {
+      background: var(--surface-2);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      border-left: 4px solid var(--blue-neo);
+    }
+
+    .info-card i {
+      font-size: 1.5rem;
+      color: var(--blue-neo);
+      margin-top: 0.25rem;
+    }
+
+    .info-content h4 {
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .info-content p {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    /* Mobile responsiveness for deploy section */
+    @media (max-width: 768px) {
+      .deploy-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .deploy-title i {
+        font-size: 2.5rem;
+      }
+
+      .deploy-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .deploy-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+
+      .deploy-card {
+        padding: 1.5rem;
+      }
+
+      .deploy-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+
+      .deploy-name {
+        font-size: 1.2rem;
+      }
+
+      .info-card {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -596,6 +874,106 @@
           <div class="tech-badge">Node.js</div>
           <div class="tech-badge">WhatsApp Web</div>
           <div class="tech-badge">Multi-Device</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deploy Section -->
+    <div class="deploy-section slide-up">
+      <h2 class="deploy-title">
+        <i class="fas fa-rocket"></i>
+        Deploy Your Bot
+      </h2>
+      <p class="deploy-subtitle">Choose your preferred platform to deploy 𝐀ɭīī 𝐌𝐃 𝐁❍𝐓 in one click</p>
+      
+      <div class="deploy-grid">
+        <!-- Heroku -->
+        <a href="https://heroku.com/deploy?template=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card heroku">
+          <div class="deploy-icon">
+            <i class="fas fa-server"></i>
+          </div>
+          <h3 class="deploy-name">Heroku</h3>
+          <p class="deploy-desc">Cloud platform with easy scaling</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- Railway -->
+        <a href="https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FALI-INXIDE%2FALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card railway">
+          <div class="deploy-icon">
+            <i class="fas fa-train"></i>
+          </div>
+          <h3 class="deploy-name">Railway</h3>
+          <p class="deploy-desc">Modern deployment platform</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- Render -->
+        <a href="https://render.com/deploy?repo=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card render">
+          <div class="deploy-icon">
+            <i class="fas fa-cube"></i>
+          </div>
+          <h3 class="deploy-name">Render</h3>
+          <p class="deploy-desc">Fast and reliable hosting</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- Vercel -->
+        <a href="https://vercel.com/new/clone?repository-url=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card vercel">
+          <div class="deploy-icon">
+            <i class="fas fa-play"></i>
+          </div>
+          <h3 class="deploy-name">Vercel</h3>
+          <p class="deploy-desc">Frontend & serverless functions</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- DigitalOcean -->
+        <a href="https://cloud.digitalocean.com/apps/new?repo=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card digitalocean">
+          <div class="deploy-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3 class="deploy-name">DigitalOcean</h3>
+          <p class="deploy-desc">Scalable cloud infrastructure</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+
+        <!-- Netlify -->
+        <a href="https://app.netlify.com/start/deploy?repository=https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="deploy-card netlify">
+          <div class="deploy-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3 class="deploy-name">Netlify</h3>
+          <p class="deploy-desc">JAMstack deployments</p>
+          <div class="deploy-badge">
+            <i class="fas fa-up-right-from-square"></i>
+            Deploy Now
+          </div>
+        </a>
+      </div>
+
+      <div class="deploy-info">
+        <div class="info-card">
+          <i class="fas fa-info-circle"></i>
+          <div class="info-content">
+            <h4>Quick Setup Guide</h4>
+            <p>Most platforms will automatically detect the configuration. Just add your environment variables and deploy!</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);"><strong>Recommended for 24/7 bots:</strong> Heroku, Railway, Render, and DigitalOcean support persistent processes. Vercel and Netlify are better for static/serverless deployments.</p>
+          </div>
         </div>
       </div>
     </div>
