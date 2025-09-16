@@ -1623,7 +1623,7 @@
     });
     
     // Intersection Observer for performance-optimized animations
-    const observerOptions = {
+    const cardObserverOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -10% 0px'
     };
@@ -1637,7 +1637,7 @@
           }, index * 100);
         }
       });
-    }, observerOptions);
+    }, cardObserverOptions);
     
     // Observe cards for staggered animations
     document.querySelectorAll('.feature-card, .support-card, .deploy-card').forEach(card => {
