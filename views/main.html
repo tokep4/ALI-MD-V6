@@ -257,6 +257,244 @@
         font-size: 2rem;
       }
     }
+
+    /* GitHub Section */
+    .github-section {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .github-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #333333, #24292F);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .github-title i {
+      font-size: 3rem;
+      color: #333333;
+      animation: githubRotate 4s ease-in-out infinite;
+    }
+
+    @keyframes githubRotate {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.1); }
+    }
+
+    .github-card {
+      background: var(--grad-surface);
+      backdrop-filter: blur(20px);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .github-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(51, 51, 51, 0.1), transparent);
+      transition: left 0.8s ease;
+    }
+
+    .github-card:hover::before {
+      left: 100%;
+    }
+
+    .github-card:hover {
+      transform: translateY(-8px);
+      border-color: #333333;
+      box-shadow: 0 25px 50px rgba(51, 51, 51, 0.2);
+    }
+
+    .github-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .repo-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #333333, #24292F);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+      animation: iconPulse 2s ease-in-out infinite;
+      box-shadow: 0 8px 20px rgba(51, 51, 51, 0.3);
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .repo-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .repo-name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .repo-desc {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .repo-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .github-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .github-btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+    }
+
+    .github-btn.primary {
+      background: linear-gradient(135deg, #333333, #24292F);
+      color: white;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3);
+    }
+
+    .github-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(51, 51, 51, 0.4);
+    }
+
+    .github-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .github-btn.secondary:hover {
+      color: #333333;
+      border-color: #333333;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(51, 51, 51, 0.1);
+    }
+
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-badge {
+      background: var(--surface-2);
+      color: var(--text);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .tech-badge:hover {
+      background: var(--blue-neo);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* Mobile responsiveness for GitHub section */
+    @media (max-width: 768px) {
+      .github-title {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .github-title i {
+        font-size: 2.5rem;
+      }
+
+      .github-card {
+        padding: 2rem;
+      }
+
+      .github-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .repo-info {
+        text-align: center;
+      }
+
+      .repo-stats {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .github-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .github-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .tech-stack {
+        gap: 0.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -312,6 +550,53 @@
             Follow Channel
           </div>
         </a>
+      </div>
+    </div>
+
+    <!-- GitHub Section -->
+    <div class="github-section slide-up">
+      <h2 class="github-title">
+        <i class="fab fa-github"></i>
+        Open Source Project
+      </h2>
+      <div class="github-card">
+        <div class="github-header">
+          <div class="repo-icon">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <div class="repo-info">
+            <h3 class="repo-name">ALI-MD</h3>
+            <p class="repo-desc">Advanced WhatsApp Bot with Multi-Device Support</p>
+          </div>
+          <div class="repo-stats">
+            <div class="stat-item">
+              <i class="fas fa-star"></i>
+              <span>Stars</span>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-code-branch"></i>
+              <span>Forks</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="github-actions">
+          <a href="https://github.com/ALI-INXIDE/ALI-MD" target="_blank" rel="noopener noreferrer" class="github-btn primary">
+            <i class="fab fa-github"></i>
+            View Repository
+          </a>
+          <a href="https://github.com/ALI-INXIDE/ALI-MD/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer" class="github-btn secondary">
+            <i class="fas fa-download"></i>
+            Download ZIP
+          </a>
+        </div>
+        
+        <div class="tech-stack">
+          <div class="tech-badge">JavaScript</div>
+          <div class="tech-badge">Node.js</div>
+          <div class="tech-badge">WhatsApp Web</div>
+          <div class="tech-badge">Multi-Device</div>
+        </div>
       </div>
     </div>
 
